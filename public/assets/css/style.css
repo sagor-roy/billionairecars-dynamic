@@ -53,6 +53,10 @@ a.navbar-brand.logo img {
     width: 100px;
 }
 
+.tab .accordion-button {
+    padding: 5px !important;
+}
+
 ul, ol {
     list-style: none;
     padding: 0px;
@@ -546,6 +550,7 @@ ul.nav_list li a:hover {
 .accordion-button:not(.collapsed) {
     background: none;
     color: rgb(228, 205, 102);
+    padding: 15px 5px !important;
 }
 
 .accordion-body {
@@ -561,16 +566,18 @@ ul.nav_list li a:hover {
     background-image: none;
     font-weight: 100;
     color: black;
-    transform: translateY(-4px);
+    /* transform: translateY(-4px); */
 }
 
 .accordion-button:not(.collapsed)::after {
     width: auto;
-    height: auto;
+    height: 0;
     background-image: none;
     content: "-";
     font-size: 48px;
     transform: rotate(0deg);
+    margin-top: -50px;
+    font-weight: 100;
 }
 
 .accordion-item {
@@ -604,6 +611,16 @@ h2.accordion-header {
     top: 17px;
     right: 35px;
 }
+
+.custom-row {
+    --bs-gutter-x: 0.6em;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(var(--bs-gutter-y) * -1);
+    margin-right: calc(var(--bs-gutter-x)/ -2);
+    margin-left: calc(var(--bs-gutter-x)/ -2);
+} 
 
 .tag {
     background-color: rgb(242, 245, 251);

@@ -1,7 +1,7 @@
 <header class="sticky_menu {{ \Route::is('details') ? 'bg-dark position-relative':'' }}" id="sticky_navbar">
     <nav class="navbar navbar-expand-md px-4 p-md-0">
         <div class="container-lg">
-            <a class="navbar-brand logo" href="index.html">
+            <a class="navbar-brand logo" href="{{ url('/') }}">
                 <img src="https://billionairecars.nl/wp-content/uploads/2022/07/Middel-1-1.png" alt="logo">
             </a>
             <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse ms-md-5" id="navbar">
                 <ul class="navbar-nav ms-auto nav_list">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="search.html">All Vehicles</a>

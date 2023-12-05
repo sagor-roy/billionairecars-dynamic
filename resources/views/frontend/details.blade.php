@@ -34,14 +34,14 @@
                             @endphp
                             <div class="lg-image">
                                 <a class="popup-img venobox vbox-item"
-                                    href="{{ asset('uploads/product/'. $details->thumbnail) }}" data-gall="myGallery">
+                                    href="{{ asset('uploads/product/' . $details->thumbnail) }}" data-gall="myGallery">
                                     <img src="{{ asset('uploads/product/' . $details->thumbnail) }}" alt="product image" />
                                 </a>
                             </div>
                             @foreach ($gallerys as $item)
                                 <div class="lg-image">
                                     <a class="popup-img venobox vbox-item"
-                                        href="{{ asset('uploads/product/gallery/'. $item) }}" data-gall="myGallery">
+                                        href="{{ asset('uploads/product/gallery/' . $item) }}" data-gall="myGallery">
                                         <img src="{{ asset('uploads/product/gallery/' . $item) }}" alt="product image" />
                                     </a>
                                 </div>
@@ -49,8 +49,8 @@
                         </div>
                         <div class="product-details-thumbs slider-thumbs-1">
                             <div class="sm-image"><img src="{{ asset('uploads/product/' . $details->thumbnail) }}"
-                                alt="product image thumb" />
-                        </div>
+                                    alt="product image thumb" />
+                            </div>
                             @foreach ($gallerys as $item)
                                 <div class="sm-image"><img src="{{ asset('uploads/product/gallery/' . $item) }}"
                                         alt="product image thumb" />
@@ -65,70 +65,96 @@
 
                     <div class="short_description mt-5 d-md-none shadow-sm">
                         <table class="table">
-                            <tr>
-                                <td>Make:</td>
-                                <td>BMW</td>
-                            </tr>
-                            <tr>
-                                <td>Model:</td>
-                                <td>8-Serie</td>
-                            </tr>
-                            <tr>
-                                <td>Color:</td>
-                                <td>Grey</td>
-                            </tr>
-                            <tr>
-                                <td>Drive Type:</td>
-                                <td>Front Wheel Drive</td>
-                            </tr>
-                            <tr>
-                                <td>Transmission:</td>
-                                <td>Automatic</td>
-                            </tr>
-                            <tr>
-                                <td>Condition:</td>
-                                <td>New</td>
-                            </tr>
-                            <tr>
-                                <td>Year:</td>
-                                <td>2021</td>
-                            </tr>
-                            <tr>
-                                <td>Fuel Type:</td>
-                                <td>Petrol</td>
-                            </tr>
-                            <tr>
-                                <td>Engine Size:</td>
-                                <td>3.8L</td>
-                            </tr>
-                            <tr>
-                                <td>Doors:</td>
-                                <td>2-door</td>
-                            </tr>
-                            <tr>
-                                <td>Cylinders:</td>
-                                <td>4</td>
-                            </tr>
-                            <tr>
-                                <td>VIN:</td>
-                                <td>1C4TJPBA1CD907950</td>
-                            </tr>
+                            @if ($details->brands->brand)
+                                <tr>
+                                    <td>Make:</td>
+                                    <td>{{ $details->brands->brand }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->model)
+                                <tr>
+                                    <td>Model:</td>
+                                    <td>{{ $details->model }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->color)
+                                <tr>
+                                    <td>Color:</td>
+                                    <td>{{ $details->color }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->drive_type)
+                                <tr>
+                                    <td>Drive Type:</td>
+                                    <td>{{ $details->drive_type }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->transmission)
+                                <tr>
+                                    <td>Transmission:</td>
+                                    <td>{{ $details->transmission }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->conditions)
+                                <tr>
+                                    <td>Condition:</td>
+                                    <td>{{ $details->conditions }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->year)
+                                <tr>
+                                    <td>Year:</td>
+                                    <td>{{ $details->year }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->fuel)
+                                <tr>
+                                    <td>Fuel Type:</td>
+                                    <td>{{ $details->fuel }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->engine_size)
+                                <tr>
+                                    <td>Engine Size:</td>
+                                    <td>{{ $details->engine_size }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->doors)
+                                <tr>
+                                    <td>Doors:</td>
+                                    <td>{{ $details->doors }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->cylinders)
+                                <tr>
+                                    <td>Cylinders:</td>
+                                    <td>{{ $details->cylinders }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->vin)
+                                <tr>
+                                    <td>VIN:</td>
+                                    <td>{{ $details->vin }}</td>
+                                </tr>
+                            @endif
                         </table>
+
 
                     </div>
 
                     <div class="contact_with_admin d-md-none">
                         <a href="#" class="call"><i class="fas fa-phone-alt"></i>
                             123 *** ***- reveal</a>
-                        <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i> Chat Via Whatsapp</a>
-                        <a href="#" class="message">Send Message</a>
+                        <a href="https://api.whatsapp.com/send?phone=31649810044&text=Hallo%20Billionaire%20cars%2C"
+                            class="whatsapp"><i class="fab fa-whatsapp"></i> Chat Via Whatsapp</a>
+                        <a href="#send_message" class="message">Send Message</a>
                     </div>
 
                     @if ($details->short_description)
-                    <div class="description mt-5">
-                        <h4 class="mb-3">Description</h4>
-                        {!! $details->short_description !!}
-                    </div>
+                        <div class="description mt-5">
+                            <h4 class="mb-3">Description</h4>
+                            {!! $details->short_description !!}
+                        </div>
                     @endif
 
                     {{-- <div class="tag mt-5 shadow-sm">
@@ -150,23 +176,140 @@
                         {!! $details->accessories !!}
                     </div>
 
-                    <div class="video mt-2">
-                        <h4 class="mb-3">Video</h4>
-                        <iframe class="shadow-sm rounded-3" src="https://www.youtube.com/embed/3mhtR0dPkBk?autoplay=1"
-                            title="YouTube video player" frameborder="0" width="100%" height="400"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+                    <div class="mt-2 tab">
+                        <div class="accordion accordion-flush" id="faqlist">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq-content-1">
+                                        License Plate Details
+                                    </button>
+                                </h2>
+                                <div id="faq-content-1" class="accordion-collapse collapse show" data-bs-parent="#faqlist">
+                                    <div class="accordion-body">
+                                        {!! $details->license_plate_details !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq-content-3">
+                                        Financial Details
+                                    </button>
+                                </h2>
+                                <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                    <div class="accordion-body">
+                                        {!! $details->financial_details !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq-content-4">
+                                        Technical Data
+                                    </button>
+                                </h2>
+                                <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                    <div class="accordion-body">
+                                        {!! $details->technical_data !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq-content-5">
+                                        Vehicle Data Specific
+                                    </button>
+                                </h2>
+                                <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                    <div class="accordion-body">
+                                        {!! $details->vehicle_data_specific !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq-content-7">
+                                        Environmental Data
+                                    </button>
+                                </h2>
+                                <div id="faq-content-7" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                    <div class="accordion-body">
+                                        {!! $details->environmental_data !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq-content-8">
+                                        Comments
+                                    </button>
+                                </h2>
+                                <div id="faq-content-8" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                    <div class="accordion-body">
+                                        {!! $details->comments !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq-content-9">
+                                        Options
+                                    </button>
+                                </h2>
+                                <div id="faq-content-9" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                    <div class="accordion-body">
+                                        {!! $details->options !!}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq-content-10">
+                                        Other Information
+                                    </button>
+                                </h2>
+                                <div id="faq-content-10" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                    <div class="accordion-body">
+                                        {!! $details->other_information !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
+                    @if ($details->video_url)
+                        <div class="video mt-5">
+                            <h4 class="mb-3">Video</h4>
+                            <iframe class="shadow-sm rounded-3" src="{{ $details->video_url }}"
+                                title="YouTube video player" frameborder="0" width="100%" height="400"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                    @endif
 
-                    <div class="map mt-5">
-                        <h4 class="mb-3">Location</h4>
 
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14604.928473341397!2d90.36276364999999!3d23.7747473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1700238332679!5m2!1sen!2sbd"
-                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
+                    @if ($details->map_location)
+                        <div class="map mt-5">
+                            <h4 class="mb-3">Location</h4>
+                            <iframe src="{{ $details->map_location }}" width="100%" height="450" style="border:0;"
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    @endif
 
                 </div>
                 <div class="col-md-5">
@@ -183,70 +326,110 @@
 
                     <div class="short_description d-none d-md-block shadow-sm">
                         <table class="table">
-                            <tr>
-                                <td>Make:</td>
-                                <td>BMW</td>
-                            </tr>
-                            <tr>
-                                <td>Model:</td>
-                                <td>8-Serie</td>
-                            </tr>
-                            <tr>
-                                <td>Color:</td>
-                                <td>Grey</td>
-                            </tr>
-                            <tr>
-                                <td>Drive Type:</td>
-                                <td>Front Wheel Drive</td>
-                            </tr>
-                            <tr>
-                                <td>Transmission:</td>
-                                <td>Automatic</td>
-                            </tr>
-                            <tr>
-                                <td>Condition:</td>
-                                <td>New</td>
-                            </tr>
-                            <tr>
-                                <td>Year:</td>
-                                <td>2021</td>
-                            </tr>
-                            <tr>
-                                <td>Fuel Type:</td>
-                                <td>Petrol</td>
-                            </tr>
-                            <tr>
-                                <td>Engine Size:</td>
-                                <td>3.8L</td>
-                            </tr>
-                            <tr>
-                                <td>Doors:</td>
-                                <td>2-door</td>
-                            </tr>
-                            <tr>
-                                <td>Cylinders:</td>
-                                <td>4</td>
-                            </tr>
-                            <tr>
-                                <td>VIN:</td>
-                                <td>1C4TJPBA1CD907950</td>
-                            </tr>
+                            @if ($details->brands->brand)
+                                <tr>
+                                    <td>Make:</td>
+                                    <td>{{ $details->brands->brand }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->model)
+                                <tr>
+                                    <td>Model:</td>
+                                    <td>{{ $details->model }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->color)
+                                <tr>
+                                    <td>Color:</td>
+                                    <td>{{ $details->color }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->drive_type)
+                                <tr>
+                                    <td>Drive Type:</td>
+                                    <td>{{ $details->drive_type }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->transmission)
+                                <tr>
+                                    <td>Transmission:</td>
+                                    <td>{{ $details->transmission }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->conditions)
+                                <tr>
+                                    <td>Condition:</td>
+                                    <td>{{ $details->conditions }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->year)
+                                <tr>
+                                    <td>Year:</td>
+                                    <td>{{ $details->year }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->fuel)
+                                <tr>
+                                    <td>Fuel Type:</td>
+                                    <td>{{ $details->fuel }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->engine_size)
+                                <tr>
+                                    <td>Engine Size:</td>
+                                    <td>{{ $details->engine_size }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->doors)
+                                <tr>
+                                    <td>Doors:</td>
+                                    <td>{{ $details->doors }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->cylinders)
+                                <tr>
+                                    <td>Cylinders:</td>
+                                    <td>{{ $details->cylinders }}</td>
+                                </tr>
+                            @endif
+                            @if ($details->vin)
+                                <tr>
+                                    <td>VIN:</td>
+                                    <td>{{ $details->vin }}</td>
+                                </tr>
+                            @endif
                         </table>
+
 
                     </div>
 
                     <div class="contact_with_admin d-none d-md-block">
                         <a href="#" class="call"><i class="fas fa-phone-alt"></i>
                             123 *** ***- reveal</a>
-                        <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i> Chat Via Whatsapp</a>
-                        <a href="#" class="message">Send Message</a>
+                        <a href="https://api.whatsapp.com/send?phone=31649810044&text=Hallo%20Billionaire%20cars%2C"
+                            class="whatsapp"><i class="fab fa-whatsapp"></i> Chat Via Whatsapp</a>
+                        <a href="#send_message" class="message">Send Message</a>
+                    </div>
+
+                    <div class="mt-5">
+                        <h4>Gallery</h4>
+                        <div class="row">
+                            @foreach ($gallerys as $item)
+                                <div class="col-4 col-sm-3 my-2">
+                                    <a class="popup-img venobox vbox-item"
+                                        href="{{ asset('uploads/product/gallery/' . $item) }}" data-gall="myGallery">
+                                        <img src="{{ asset('uploads/product/gallery/' . $item) }}" class="img-fluid w-100 rounded-2 shadow-sm" alt="product image" />
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="contact__form mt-5">
+    <section class="contact__form mt-5" id="send_message">
         <div class="container-lg">
             <h4 class="mb-4">Send Message</h4>
             <div class="row">
@@ -277,7 +460,8 @@
                             <p> <i class="fas fa-map-marker-alt map__icon"></i> 70 Washington Street
                             </p>
                         </div>
-                        <img src="./img/avatar.jpeg" width="70" alt="avatar" class="rounded-circle">
+                        <img src="{{ asset('assets') }}/img/avatar.jpeg" width="70" alt="avatar"
+                            class="rounded-circle">
                     </div>
                     <div class="contact_card_second"></div>
                 </div>
@@ -285,145 +469,46 @@
         </div>
     </section>
 
-    <section class="mt-5">
-        <div class="container-lg">
-            <h4 class="mb-4">Related Listing</h4>
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="">
-                            <div class="card border-0 sm_card product_card">
-                                <div class="product-image">
-                                    <img src="./img/5-335x186.jpeg" class="img-fluid d-block" alt="img">
-                                </div>
-                                <div class="card_body">
-                                    <h6 class="product_title">Lorem ipsum dolor sit.</h6>
-                                    <h3 class="sm_price">$63,000</h3>
-                                    <hr>
-                                    <div class="product_item_price">
-                                        <ul class="product_item_list">
-                                            <li>2021</li>
-                                            <li>Diesel</li>
-                                            <li>Petrol</li>
-                                        </ul>
+    @if (count($related_vihicles) > 0)
+        <section class="mt-5">
+            <div class="container-lg">
+                <h4 class="mb-4">Related Vehicles</h4>
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        @foreach ($related_vihicles as $key => $item)
+                            <div class="swiper-slide">
+                                <a href="{{ route('details', $item->slug) }}">
+                                    <div class="card border-0 sm_card product_card">
+                                        <div class="product-image">
+                                            <img src="{{ asset('uploads/product/' . $item->thumbnail) }}"
+                                                class="img-fluid d-block" alt="img">
+                                        </div>
+                                        <div class="card_body">
+                                            <h6 class="product_title">{{ $item?->title }}</h6>
+                                            {{-- <h3 class="sm_price">$63,000</h3> --}}
+                                            <hr style="margin: 10px 0px">
+                                            <div class="product_item_price">
+                                                <ul class="product_item_list">
+                                                    <li>{{ $item?->year }}</li>
+                                                    <li>{{ $item?->brands->brand }}</li>
+                                                    <li>{{ $item?->color }}</li>
+                                                </ul>
+                                                <h6>${{ $item?->price }}</h6>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
-                        </a>
+                        @endforeach
                     </div>
-                    <div class="swiper-slide">
-                        <a href="">
-                            <div class="card border-0 sm_card product_card">
-                                <div class="product-image">
-                                    <img src="./img/5-335x186.jpeg" class="img-fluid d-block" alt="img">
-                                </div>
-                                <div class="card_body">
-                                    <h6 class="product_title">Lorem ipsum dolor sit.</h6>
-                                    <h3 class="sm_price">$63,000</h3>
-                                    <hr>
-                                    <div class="product_item_price">
-                                        <ul class="product_item_list">
-                                            <li>2021</li>
-                                            <li>Diesel</li>
-                                            <li>Petrol</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                    <div class="bottom-nav">
+                        <div class="button-prev"><i class="fas fa-chevron-left"></i></div>
+                        <div class="button-next"><i class="fas fa-chevron-right"></i></div>
                     </div>
-                    <div class="swiper-slide">
-                        <a href="">
-                            <div class="card border-0 sm_card product_card">
-                                <div class="product-image">
-                                    <img src="./img/5-335x186.jpeg" class="img-fluid d-block" alt="img">
-                                </div>
-                                <div class="card_body">
-                                    <h6 class="product_title">Lorem ipsum dolor sit.</h6>
-                                    <h3 class="sm_price">$63,000</h3>
-                                    <hr>
-                                    <div class="product_item_price">
-                                        <ul class="product_item_list">
-                                            <li>2021</li>
-                                            <li>Diesel</li>
-                                            <li>Petrol</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="">
-                            <div class="card border-0 sm_card product_card">
-                                <div class="product-image">
-                                    <img src="./img/5-335x186.jpeg" class="img-fluid d-block" alt="img">
-                                </div>
-                                <div class="card_body">
-                                    <h6 class="product_title">Lorem ipsum dolor sit.</h6>
-                                    <h3 class="sm_price">$63,000</h3>
-                                    <hr>
-                                    <div class="product_item_price">
-                                        <ul class="product_item_list">
-                                            <li>2021</li>
-                                            <li>Diesel</li>
-                                            <li>Petrol</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="">
-                            <div class="card border-0 sm_card product_card">
-                                <div class="product-image">
-                                    <img src="./img/5-335x186.jpeg" class="img-fluid d-block" alt="img">
-                                </div>
-                                <div class="card_body">
-                                    <h6 class="product_title">Lorem ipsum dolor sit.</h6>
-                                    <h3 class="sm_price">$63,000</h3>
-                                    <hr>
-                                    <div class="product_item_price">
-                                        <ul class="product_item_list">
-                                            <li>2021</li>
-                                            <li>Diesel</li>
-                                            <li>Petrol</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="">
-                            <div class="card border-0 sm_card product_card">
-                                <div class="product-image">
-                                    <img src="./img/5-335x186.jpeg" class="img-fluid d-block" alt="img">
-                                </div>
-                                <div class="card_body">
-                                    <h6 class="product_title">Lorem ipsum dolor sit.</h6>
-                                    <h3 class="sm_price">$63,000</h3>
-                                    <hr>
-                                    <div class="product_item_price">
-                                        <ul class="product_item_list">
-                                            <li>2021</li>
-                                            <li>Diesel</li>
-                                            <li>Petrol</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="bottom-nav">
-                    <div class="button-prev"><i class="fas fa-chevron-left"></i></div>
-                    <div class="button-next"><i class="fas fa-chevron-right"></i></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 @endsection
 
 @push('script')

@@ -26,7 +26,10 @@ class HomeController extends Controller
         $details = Cache::remember("products_details_$slug", env('CACHE_TIME'), function () use ($slug) {
             return Product::with('brands')->where(['status' => 1, 'slug' => $slug])->firstOrFail();
         });
-        //return $details->thumbnail;
-        return view('frontend.details', compact('details'));
+        $related_vihicles = Cache::remember("related_vihicles_$details->id", env('CACHE_TIME'), function () use ($details) {
+            return Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')->with('brands')->where(['brand' => $details->brand, 'status' => 1])->limit(10)->orderBy('id', 'desc')->get();
+        });
+        //return $related_vihicles;
+        return view('frontend.details', compact('details','related_vihicles'));
     }
 }
