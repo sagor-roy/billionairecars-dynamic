@@ -250,7 +250,7 @@
 						<div class="fileUpload btn " > 
 						    <span>  <i class="fa fa-camera"></i>  </span>
 						    <div class="title"> Browse File </div>
-						    <input type="file" name="gallery[]" class="upload"   accept="image/x-png,image/gif,image/jpeg"     />
+						    <input type="file" name="gallery[]" multiple class="upload"   accept="image/x-png,image/gif,image/jpeg"     />
 						</div>		
 					</div>
 					<ul class="uploadedLists " >
@@ -261,7 +261,7 @@
 						@if(file_exists('./uploads/product/gallery/'.$files) && $files !='')
 						<li id="cr-<?php echo $cr;?>" class="">							
 							<a href="{{ url('/uploads/product/gallery//'.$files) }}" target="_blank" >
-							{!! SiteHelpers::showUploadedFile( $files ,"/uploads/images/",100) !!}
+							<img src="{{ asset('./uploads/product/gallery/'.$files) }}" width="100%" alt="img">
 							</a> 
 							<span class="pull-right removeMultiFiles" rel="cr-<?php echo $cr;?>" url="/uploads/product/gallery/{{$files}}">
 							<i class="fa fa-trash-o  btn btn-xs btn-danger"></i></span>

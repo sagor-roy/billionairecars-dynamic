@@ -9,4 +9,9 @@ Route::resource('adminproduct','AdminproductController');
 Route::resource('adminbrand','AdminbrandController');
 // End Routes for adminbrand 
 
+                    
+// Start Routes for adminfaqs 
+Route::resource('adminfaqs','AdminfaqsController');
+// End Routes for adminfaqs 
+
                     ?>

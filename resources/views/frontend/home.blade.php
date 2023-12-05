@@ -98,7 +98,7 @@
             <div class="mt-5">
                 <div class="row">
                     <div class="col-lg-6 d-none d-lg-block">
-                        <a href="{{ route('details',$premium_products?->first()?->slug) }}">
+                        <a href="{{ route('details', $premium_products?->first()?->slug) }}">
                             <div class="card border-0 product_card">
                                 <div class="product-image">
                                     <img src="{{ asset('uploads/product/' . $premium_products?->first()?->thumbnail) }}"
@@ -124,7 +124,7 @@
                     <div class="col-lg-6">
                         <div class="row">
                             <div class="col-sm-6 col-lg-6 mb-3 d-block d-lg-none">
-                                <a href="{{ route('details',$premium_products?->first()?->slug) }}">
+                                <a href="{{ route('details', $premium_products?->first()?->slug) }}">
                                     <div class="card border-0 sm_card product_card">
                                         <div class="product-image">
                                             <img src="{{ asset('uploads/product/' . $premium_products?->first()?->thumbnail) }}"
@@ -257,82 +257,22 @@
                         </h1>
                     </div>
                     <div class="accordion accordion-flush" id="faqlist">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq-content-1">
-                                    What is Lorem Ipsum?
-                                </button>
-                            </h2>
-                            <div id="faq-content-1" class="accordion-collapse collapse show" data-bs-parent="#faqlist">
-                                <div class="accordion-body">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s.
+                        @foreach ($faqs as $item)
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button {{ !$loop->first ? 'collapsed':'' }}" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq-content-{{ $item->id }}">
+                                        {{ $item->title }}
+                                    </button>
+                                </h2>
+                                <div id="faq-content-{{ $item->id }}" class="accordion-collapse collapse {{ $loop->first ? 'show':'' }}"
+                                    data-bs-parent="#faqlist">
+                                    <div class="accordion-body">
+                                        {{ $item->description }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq-content-2">
-                                    Why do we use it?
-                                </button>
-                            </h2>
-                            <div id="faq-content-2" class="accordion-collapse collapse show" data-bs-parent="#faqlist">
-                                <div class="accordion-body">
-                                    It is a long established fact that a reader will be distracted by the readable
-                                    content of a page when looking at its layout. The point of using Lorem Ipsum is that
-                                    it has a more-or-less normal distribution of letters, as opposed to using 'Content
-                                    here.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq-content-3">
-                                    Where does it come from?
-                                </button>
-                            </h2>
-                            <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                                <div class="accordion-body">
-                                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                                    piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq-content-4">
-                                    Where does it come from?
-                                </button>
-                            </h2>
-                            <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                                <div class="accordion-body">
-                                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                                    piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#faq-content-5">
-                                    Where does it come from?
-                                </button>
-                            </h2>
-                            <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                                <div class="accordion-body">
-                                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                                    piece of classical Latin literature from 45 BC, making it over 2000 years old.
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

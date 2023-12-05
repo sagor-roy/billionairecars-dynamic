@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -17,8 +18,12 @@ class HomeController extends Controller
         $commercial_products = Cache::remember("commercial_products", env('CACHE_TIME'), function () {
             return Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')->with('brands')->where(['status' => 1, 'type' => 'Commercial'])->limit(10)->orderBy('id', 'desc')->get();
         });
+
+        $faqs = Cache::remember("faqs", env('CACHE_TIME'), function () {
+            return DB::table('faq')->where(['status' => 1])->get();
+        });
         //return $commercial_products;
-        return view("frontend.home", compact("premium_products", "commercial_products"));
+        return view("frontend.home", compact("premium_products", "commercial_products", "faqs"));
     }
 
     public function details($slug)
