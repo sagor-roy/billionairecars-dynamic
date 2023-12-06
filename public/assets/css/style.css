@@ -612,6 +612,16 @@ h2.accordion-header {
     right: 35px;
 }
 
+button.send_message_btn {
+    border: none;
+    background-color: #e4cd66;
+    padding: 10px 25px;
+    display: inline-block;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 1px #ddd;
+    margin-top: 10px;
+}
+
 .custom-row {
     --bs-gutter-x: 0.6em;
     --bs-gutter-y: 0;

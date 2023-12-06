@@ -35,6 +35,23 @@ class HomeController extends Controller
             return Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')->with('brands')->where(['brand' => $details->brand, 'status' => 1])->limit(10)->orderBy('id', 'desc')->get();
         });
         //return $related_vihicles;
-        return view('frontend.details', compact('details','related_vihicles'));
+        return view('frontend.details', compact('details', 'related_vihicles'));
+    }
+
+    public function contact_message(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'message' => 'required'
+        ]);
+
+        try {
+            DB::table('contact')->insert($request->all());
+            return response()->json(['status' => 'success']);
+        } catch (\Throwable $th) {
+            return response()->json(['status' => 'faild']);
+        }
     }
 }

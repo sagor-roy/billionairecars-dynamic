@@ -260,12 +260,13 @@
                         @foreach ($faqs as $item)
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button {{ !$loop->first ? 'collapsed':'' }}" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#faq-content-{{ $item->id }}">
+                                    <button class="accordion-button {{ !$loop->first ? 'collapsed' : '' }}" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq-content-{{ $item->id }}">
                                         {{ $item->title }}
                                     </button>
                                 </h2>
-                                <div id="faq-content-{{ $item->id }}" class="accordion-collapse collapse {{ $loop->first ? 'show':'' }}"
+                                <div id="faq-content-{{ $item->id }}"
+                                    class="accordion-collapse collapse {{ $loop->first ? 'show' : '' }}"
                                     data-bs-parent="#faqlist">
                                     <div class="accordion-body">
                                         {{ $item->description }}

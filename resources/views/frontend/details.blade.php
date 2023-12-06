@@ -1,5 +1,14 @@
 @extends('frontend.layouts.app')
 
+@push('style')
+    <style>
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+@endpush
+
 @section('content')
     <section class="my-4">
         <div class="container-lg">
@@ -418,7 +427,8 @@
                                 <div class="col-4 col-sm-3 my-2">
                                     <a class="popup-img venobox vbox-item"
                                         href="{{ asset('uploads/product/gallery/' . $item) }}" data-gall="myGallery">
-                                        <img src="{{ asset('uploads/product/gallery/' . $item) }}" class="img-fluid w-100 rounded-2 shadow-sm" alt="product image" />
+                                        <img src="{{ asset('uploads/product/gallery/' . $item) }}"
+                                            class="img-fluid w-100 rounded-2 shadow-sm" alt="product image" />
                                     </a>
                                 </div>
                             @endforeach
@@ -434,25 +444,34 @@
             <h4 class="mb-4">Send Message</h4>
             <div class="row">
                 <div class="col-md-6">
-                    <form action="">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                        </symbol>
+                    </svg>
+
+                    <div id="alert_message"></div>
+                    <form id="contactForm">
                         <div class="row">
                             <div class="col-md-4 my-2">
-                                <input type="text" class="form-control shadow-sm" placeholder="Name">
+                                <input type="text" class="form-control shadow-sm" placeholder="Name" name="name">
                             </div>
                             <div class="col-md-4 my-2">
-                                <input type="text" class="form-control shadow-sm" placeholder="Email">
+                                <input type="text" class="form-control shadow-sm" placeholder="Email" name="email">
                             </div>
                             <div class="col-md-4 my-2">
-                                <input type="text" class="form-control shadow-sm" placeholder="Phone">
+                                <input type="text" class="form-control shadow-sm" placeholder="Phone" name="phone">
                             </div>
                             <div class="col-12 my-2">
-                                <textarea name="" class="form-control shadow-sm" placeholder="Message" rows="10"></textarea>
+                                <textarea name="message" class="form-control shadow-sm" placeholder="Message" rows="10"></textarea>
                             </div>
                         </div>
+                        <button type="submit" id="submitButton" class="send_message_btn">Send</button>
                     </form>
                 </div>
 
-                <div class="col-md-5 offset-md-1">
+                <div class="col-md-5 offset-md-1 mt-4 mt-md-0">
                     <div class="contact_card_first shadow-sm">
                         <div class="contact__text">
                             <h5>John Doe</h5>
@@ -514,4 +533,59 @@
 @push('script')
     <script src="{{ asset('assets') }}/js/slick.min.js"></script>
     <script src="{{ asset('assets') }}/js/venobox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#contactForm").validate({
+                rules: {
+                    name: "required",
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    phone: "required",
+                    message: "required"
+                },
+                messages: {
+                    name: "Enter your name",
+                    email: {
+                        required: "Enter your email",
+                        email: "Enter a valid email address"
+                    },
+                    phone: "Enter your phone number",
+                    message: "Enter your message"
+                },
+                errorPlacement: function(error, element) {
+                    error.insertAfter(element);
+                },
+                submitHandler: function(form) {
+                    $("#submitButton").prop("disabled", true);
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ url('/contact-message') }}", // Replace with your server endpoint
+                        data: $(form).serialize(),
+                        success: function(response) {
+                            // Handle the success response from the server
+                            console.log(response);
+
+                            $("#contactForm").trigger("reset");
+                            // Reset the form validation state
+                            $(form).validate().resetForm();
+                            $("#submitButton").prop("disabled", false);
+                            let alert = `<div class="alert alert-success alert-dismissible fade show" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg><strong>Thank you!!</strong> We will contact with you!! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
+                            $('#alert_message').html(alert);
+                        },
+                        error: function(error) {
+                            // Handle errors
+                            console.error(error);
+
+                            // Enable the submit button
+                            $("#submitButton").prop("disabled", false);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 @endpush

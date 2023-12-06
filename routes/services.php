@@ -14,4 +14,9 @@ Route::resource('services/adminbrand','Services\AdminbrandController');
 Route::resource('services/adminfaqs','Services\AdminfaqsController');
 // End Routes for adminfaqs 
 
+                    
+// Start Routes for admincontact 
+Route::resource('services/admincontact','Services\AdmincontactController');
+// End Routes for admincontact 
+
                     ?>

@@ -22,6 +22,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('/vehicles-details/{slug}', [HomeController::class,'details'])->name('details');
+Route::post('/contact-message', [HomeController::class,'contact_message']);
 
 Route::get('dashboard/import', 'DashboardController@getImport');
 /* Auth & Profile */
