@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -53,5 +54,34 @@ class HomeController extends Controller
         } catch (\Throwable $th) {
             return response()->json(['status' => 'faild']);
         }
+    }
+
+    public function filter(Request $request)
+    {
+        $products = Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')
+            ->with('brands')
+            ->where(['status' => 1,])
+            ->orderBy('id', 'desc')
+            ->when(!empty($request->brand), function ($query) use ($request) {
+                $query->where('brand', $request->brand);
+            })
+            ->when(!empty($request->model), function ($query) use ($request) {
+                $query->where('model', $request->model);
+            })
+            ->get();
+            //return $request;
+        return view('frontend.load.product', compact('products'));
+    }
+
+    public function vehicles_filter()
+    {
+        $brands = Brand::all();
+        return view('frontend.filter', compact('brands'));
+    }
+
+    public function model_filter(Request $request)
+    {
+        $products = Product::select('model')->where('brand', $request->brand)->groupBy('model')->get();
+        return $products;
     }
 }

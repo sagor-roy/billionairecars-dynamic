@@ -579,7 +579,6 @@
                         error: function(error) {
                             // Handle errors
                             console.error(error);
-
                             // Enable the submit button
                             $("#submitButton").prop("disabled", false);
                         }

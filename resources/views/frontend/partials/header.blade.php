@@ -1,4 +1,4 @@
-<header class="sticky_menu {{ \Route::is('details') ? 'bg-dark position-relative':'' }}" id="sticky_navbar">
+<header class="sticky_menu {{ \Route::is('details') || \Route::is('vehicles_filter') ? 'bg-dark position-relative':'' }}" id="sticky_navbar">
     <nav class="navbar navbar-expand-md px-4 p-md-0">
         <div class="container-lg">
             <a class="navbar-brand logo" href="{{ url('/') }}">
@@ -13,7 +13,7 @@
                         <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="search.html">All Vehicles</a>
+                        <a class="nav-link" href="{{ route('vehicles_filter') }}">All Vehicles</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Commercial Vehicles</a>
