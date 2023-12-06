@@ -23,7 +23,7 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('/vehicles-details/{slug}', [HomeController::class,'details'])->name('details');
 Route::post('/contact-message', [HomeController::class,'contact_message']);
-Route::get('/vehicles-filter', [HomeController::class,'vehicles_filter'])->name('vehicles_filter');
+Route::get('/vehicles', [HomeController::class,'vehicles_filter'])->name('vehicles_filter');
 Route::get('/filter', [HomeController::class,'filter'])->name('filter');
 Route::get('/model-filter', [HomeController::class,'model_filter']);
 

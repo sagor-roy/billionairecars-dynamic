@@ -40,7 +40,6 @@
                         <select name="fuel" class="form-control select2">
                             <option selected disabled>Fuel</option>
                             <option value="Benzine">Benzine</option>
-                            <option value="Benzine">Benzine</option>
                             <option value="Diesel">Diesel</option>
                             <option value="Cryogeen">Cryogeen</option>
                             <option value="Diesel/Elektrisch">Diesel/Elektrisch</option>
@@ -48,10 +47,8 @@
                         </select>
                     </div>
                     <div class="col-md-3 my-2">
-                        <select name="color" class="form-control select2">
+                        <select name="color" disabled class="form-control select2">
                             <option selected disabled>Color</option>
-                            <option value="">All Models</option>
-                            <option value="">Max Price</option>
                         </select>
                     </div>
                     <div class="col-md-3 my-2">
@@ -76,7 +73,7 @@
                         </select>
                     </div>
                 </div>
-                <a href="#" class="float-end">Clear All <i class="fas fa-times text-danger"></i></a>
+                <a href="{{ url()->current() }}" class="float-end">Clear All <i class="fas fa-times text-danger"></i></a>
             </form>
             <div class="filtr_list">
                 <ul class="list">
@@ -104,27 +101,9 @@
     </section>
 
     <section>
-        <div class="container-lg">
-            <div class="result_with_view my-4">
-                <h4>100 Result</h4>
-                <ul>
-                    {{-- <li class="grid">
-                        <a href="#" class="active"><i class="fas fa-th-large"></i></a>
-                        <a href="#"><i class="fas fa-th"></i></a>
-                    </li> --}}
-                    <li>
-                        <span class="d-none d-md-block">Sort by:</span>
-                        <select name="" class="form-control" id="">
-                            <option value="">Date Listed: New</option>
-                        </select>
-                    </li>
-                </ul>
-            </div>
-
-            <div id="products">
-                <div class="text-center py-5">
-                    <h4>Loading....</h4>
-                </div>
+        <div id="product_with_result" class="container-lg">
+            <div class="text-center py-5">
+                <h4>Loading....</h4>
             </div>
         </div>
     </section>
@@ -135,11 +114,33 @@
     <script src="{{ asset('assets') }}/js/venobox.min.js"></script>
     <script>
         $(document).ready(function() {
-            // all vehicles
-            vehicles();
+            // Initialize with all vehicles
+            updateVehicles();
 
-            function vehicles(brand = "", model = "", transmission = "", fuel = "", color = "", condition = "",
-                type = "", price = "") {
+            // Event listeners for filter changes
+            $('select[name="brands"], select[name="models"], select[name="transmission"], select[name="fuel"], select[name="color"], select[name="condition"], select[name="type"]')
+                .on('change', function() {
+                    if ($(this).attr('name') === 'brands') {
+                        // If brand changes, reset model value to empty
+                        $('select[name="models"]').val('');
+                        $('select[name="color"]').val('');
+                    }
+                    updateVehicles();
+                    if ($(this).attr('name') === 'brands') {
+                        updateModels($(this).val());
+                    }
+                });
+
+            // Function to update vehicle list
+            function updateVehicles(page = 1) {
+                let brand = $('select[name="brands"]').val();
+                let model = $('select[name="models"]').val();
+                let transmission = $('select[name="transmission"]').val();
+                let fuel = $('select[name="fuel"]').val();
+                let color = $('select[name="color"]').val();
+                let condition = $('select[name="condition"]').val();
+                let type = $('select[name="type"]').val();
+
                 $.ajax({
                     type: "GET",
                     url: "{{ url('/filter') }}",
@@ -151,33 +152,16 @@
                         color,
                         condition,
                         type,
-                        price
+                        page // Pass the page parameter
                     },
                     success: function(response) {
-                        //console.log(response);
-                        console.log(response);
-                        $('#products').html(response);
+                        $('#product_with_result').html(response);
                     }
-                })
+                });
             }
 
-            // brand
-            $('select[name="brands"]').on('change', function() {
-                let brand = $(this).val();
-                let model = $('select[name="models"]').val();
-                let transmission = $('select[name="transmission"]').val();
-                let fuel = $('select[name="fuel"]').val();
-                let color = $('select[name="color"]').val();
-                let condition = $('select[name="condition"]').val();
-                let type = $('select[name="type"]').val();
-                vehicles(brand, model, transmission, fuel, color, condition, type)
-
-                console.log(model);
-                // models
-                brands(brand)
-            })
-
-            function brands(brand) {
+            // Function to update models dropdown based on brand
+            function updateModels(brand) {
                 $.ajax({
                     type: "GET",
                     url: "{{ url('/model-filter') }}",
@@ -185,32 +169,44 @@
                         brand
                     },
                     success: function(response) {
-                        let models = response;
-                        // Select the models dropdown and enable it
                         let $modelsDropdown = $('select[name="models"]');
-                        $modelsDropdown.attr('disabled', false);
-                        // Add new options based on the response
-                        let options = "<option selected disabled >All Model</option>";
-                        for (let i = 0; i < models.length; i++) {
-                            options += '<option value="' + models[i].model + '">' +
-                                models[i].model + '</option>';
+                        let $colorDropdown = $('select[name="color"]');
+
+                        // Build options for models and colors
+                        let modelOptions = "<option selected disabled >All Model</option>";
+                        let colorOptions = "<option selected disabled >Color</option>";
+
+                        // Iterate through unique models to build options
+                        for (let i = 0; i < response.model.length; i++) {
+                            modelOptions +=
+                                `<option value="${response.model[i]}">${response.model[i]}</option>`;
                         }
-                        $modelsDropdown.html(options)
+
+                        // Iterate through unique colors to build options
+                        for (let i = 0; i < response.color.length; i++) {
+                            colorOptions +=
+                                `<option value="${response.color[i]}">${response.color[i]}</option>`;
+                        }
+
+                        // Update dropdowns
+                        $modelsDropdown.html(modelOptions);
+                        $colorDropdown.html(colorOptions);
+
+                        // Enable dropdowns
+                        $modelsDropdown.attr('disabled', false);
+                        $colorDropdown.attr('disabled', false);
                     }
-                })
+
+                });
             }
 
-            // model
-            $('select[name="models"]').on('change', function() {
-                let model = $(this).val();
-                let brand = $('select[name="brands"]').val();
-                let transmission = $('select[name="transmission"]').val();
-                let fuel = $('select[name="fuel"]').val();
-                let color = $('select[name="color"]').val();
-                let condition = $('select[name="condition"]').val();
-                let type = $('select[name="type"]').val();
-                vehicles(brand, model, transmission, fuel, color, condition, type)
-            })
-        })
+            // Event listener for pagination links
+            $(document).on('click', '.pagination a', function(e) {
+                e.preventDefault();
+                let page = $(this).attr('href').split('page=')[1];
+                //console.log(page);
+                updateVehicles(page);
+            });
+        });
     </script>
 @endpush

@@ -68,9 +68,24 @@ class HomeController extends Controller
             ->when(!empty($request->model), function ($query) use ($request) {
                 $query->where('model', $request->model);
             })
-            ->get();
-            //return $request;
-        return view('frontend.load.product', compact('products'));
+            ->when(!empty($request->transmission), function ($query) use ($request) {
+                $query->where('transmission', $request->transmission);
+            })
+            ->when(!empty($request->fuel), function ($query) use ($request) {
+                $query->where('fuel', $request->fuel);
+            })
+            ->when(!empty($request->condition), function ($query) use ($request) {
+                $query->where('conditions', $request->condition);
+            })
+            ->when(!empty($request->type), function ($query) use ($request) {
+                $query->where('type', $request->type);
+            })
+            ->when(!empty($request->color), function ($query) use ($request) {
+                $query->where('color', $request->color);
+            })
+            ->paginate(8);
+        //return $products;
+        return response()->json(view('frontend.load.product', compact('products'))->render());
     }
 
     public function vehicles_filter()
@@ -81,7 +96,12 @@ class HomeController extends Controller
 
     public function model_filter(Request $request)
     {
-        $products = Product::select('model')->where('brand', $request->brand)->groupBy('model')->get();
-        return $products;
+        $products = Product::where('brand', $request->brand);
+        $models = $products->select('model')->distinct()->get();
+        $colors = $products->select('color')->distinct()->get();
+        return response()->json([
+            'color' => $colors->pluck('color')->toArray(),
+            'model' => $models->pluck('model')->toArray()
+        ]);
     }
 }
