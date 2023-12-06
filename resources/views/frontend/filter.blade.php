@@ -75,7 +75,7 @@
                         </select>
                     </div>
                 </div>
-                <a href="{{ url()->current() }}" class="float-end">Clear All <i class="fas fa-times text-danger"></i></a>
+                <a href="{{ request()->fullUrl() }}" class="float-end">Clear All <i class="fas fa-times text-danger"></i></a>
             </form>
             <div class="filtr_list">
                 <ul class="list">
