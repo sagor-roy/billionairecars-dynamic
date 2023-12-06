@@ -3,10 +3,7 @@
 @section('content')
     <section class="wrap">
         <div class="video-bg">
-            <iframe
-                src="https://www.youtube.com/embed/3mhtR0dPkBk?autoplay=1&mute=1&playsinline=1&loop=1&controls=0&disablekb=1"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div id="player"></div>
         </div>
         <div class="content">
             <div class="container">
@@ -174,7 +171,7 @@
                                 @endif
                             @endforeach
                             <div class="col-lg-6 mt-4 social_media_with_btn">
-                                <a href="#" class="add_list_button d-md-none text-center w-100"> View 29 New</a>
+                                <a href="{{ route('vehicles_filter') }}?type=premium" class="add_list_button d-md-none text-center w-100"> View {{ $totalPremium }} New</a>
                             </div>
                         </div>
                     </div>`
@@ -199,7 +196,7 @@
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                     </li>
                 </ul>
-                <a href="#" class="add_list_button d-none d-md-block"> View 29 New</a>
+                <a href="{{ route('vehicles_filter') }}?type=premium" class="add_list_button d-none d-md-block"> View {{ $totalPremium }} New</a>
             </div>
         </div>
     </section>
@@ -239,9 +236,14 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="bottom-nav">
-                        <div class="button-prev"><i class="fas fa-chevron-left"></i></div>
-                        <div class="button-next"><i class="fas fa-chevron-right"></i></div>
+                    <div class="d-flex justify-content-between mt-4">
+                        <div class="bottom-nav mt-0">
+                            <div class="button-prev"><i class="fas fa-chevron-left"></i></div>
+                            <div class="button-next"><i class="fas fa-chevron-right"></i></div>
+                        </div>
+                        <div class="social_media_with_btn">
+                            <a href="{{ route('vehicles_filter') }}?type=commercial" class="add_list_button d-none d-md-block"> View All</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -260,8 +262,9 @@
                         @foreach ($faqs as $item)
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button {{ !$loop->first ? 'collapsed' : '' }}" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#faq-content-{{ $item->id }}">
+                                    <button class="accordion-button {{ !$loop->first ? 'collapsed' : '' }}"
+                                        type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq-content-{{ $item->id }}">
                                         {{ $item->title }}
                                     </button>
                                 </h2>
@@ -280,3 +283,42 @@
         </div>
     </section>
 @endsection
+
+
+@push('script')
+    <script>
+        // Load the YouTube IFrame Player API asynchronously
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // Global variable to store the player instance
+        var player;
+
+        // Function called when the YouTube API is ready
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '390',
+                width: '640',
+                videoId: '3mhtR0dPkBk',
+                playerVars: {
+                    'autoplay': 1,
+                    'mute': 1,
+                    'playsinline': 1,
+                    'loop': 1,
+                    'controls': 0,
+                    'disablekb': 1
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        // Function called when the player is ready
+        function onPlayerReady(event) {
+            // You can do additional actions here if needed
+        }
+    </script>
+@endpush

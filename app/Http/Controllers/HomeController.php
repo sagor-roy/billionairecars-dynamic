@@ -12,10 +12,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $premium_products = Cache::remember("premium_products", env('CACHE_TIME'), function () {
-            return Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')->with('brands')->where(['status' => 1, 'type' => 'Premium'])->limit(5)->orderBy('id', 'desc')->get();
+        $products = Cache::remember("premium_products", env('CACHE_TIME'), function () {
+            return Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')->with('brands')->where(['status' => 1, 'type' => 'Premium'])->orderBy('id', 'desc');
         });
-
+        $premium_products = $products->limit(5)->get();
+        $totalPremium = $products->count();
         $commercial_products = Cache::remember("commercial_products", env('CACHE_TIME'), function () {
             return Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')->with('brands')->where(['status' => 1, 'type' => 'Commercial'])->limit(10)->orderBy('id', 'desc')->get();
         });
@@ -24,7 +25,7 @@ class HomeController extends Controller
             return DB::table('faq')->where(['status' => 1])->get();
         });
         //return $commercial_products;
-        return view("frontend.home", compact("premium_products", "commercial_products", "faqs"));
+        return view("frontend.home", compact("premium_products", "commercial_products", "faqs", "totalPremium"));
     }
 
     public function details($slug)

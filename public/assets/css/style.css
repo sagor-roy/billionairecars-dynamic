@@ -521,7 +521,7 @@ ul.footer_list {
 
     ul.compare_search li:first-child {
         margin-top: 15px !important;
-        margin-left: 15px !important;
+        /* margin-left: 15px !important; */
     }
 
     ul.list li.active a::before {
