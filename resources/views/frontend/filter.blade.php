@@ -61,8 +61,10 @@
                     <div class="col-md-3 my-2">
                         <select name="type" class="form-control select2">
                             <option selected disabled>Vihicles Type</option>
-                            <option value="Premium">Premium</option>
-                            <option value="Commercial">Commercial</option>
+                            <option {{ request('type') == 'premium' ? 'selected' : '' }} value="Premium">Premium</option>
+                            <option {{ request('type') == 'commercial' ? 'selected' : '' }} value="Commercial">Commercial
+                            </option>
+
                         </select>
                     </div>
                     <div class="col-md-3 my-2">
@@ -93,7 +95,7 @@
                         <a href="#"><i class="fas fa-exchange-alt"></i> Compare</a>
                     </li> --}}
                     <li>
-                        <input type="search" placeholder="Enter keyword">
+                        <input type="search" id="keywordInput" placeholder="Enter keyword">
                     </li>
                 </ul>
             </div>
@@ -207,6 +209,36 @@
                 //console.log(page);
                 updateVehicles(page);
             });
+
+
+            // Event listener for the search input
+            $('#keywordInput').on('input', function() {
+                filterProducts();
+            });
+
+            // Function to filter products based on the keyword
+            function filterProducts() {
+                let keyword = $('#keywordInput').val().toLowerCase();
+                // Hide all products
+                $('.search_card .col-12').hide();
+                // Show products that match the keyword
+                $('.search_card .col-12').filter(function() {
+                    let title = $(this).find('.product_title').text().toLowerCase();
+                    let year = $(this).find('.product_item_list li:nth-child(1)').text().toLowerCase();
+                    let brand = $(this).find('.product_item_list li:nth-child(2)').text().toLowerCase();
+                    let color = $(this).find('.product_item_list li:nth-child(3)').text().toLowerCase();
+                    let price = $(this).find('.product_item_price h6').text().toLowerCase();
+
+                    // Customize this logic based on your requirements
+                    return (
+                        title.includes(keyword) ||
+                        year.includes(keyword) ||
+                        brand.includes(keyword) ||
+                        color.includes(keyword) ||
+                        price.includes(keyword)
+                    );
+                }).show();
+            }
         });
     </script>
 @endpush

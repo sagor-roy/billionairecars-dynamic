@@ -16,7 +16,7 @@
                         <a class="nav-link" href="{{ route('vehicles_filter') }}">All Vehicles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Commercial Vehicles</a>
+                        <a class="nav-link" href="{{ route('vehicles_filter') }}?type=commercial">Commercial Vehicles</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Billionaire Car Plan</a>
