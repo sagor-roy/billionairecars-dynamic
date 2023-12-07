@@ -54,8 +54,8 @@
                     <div class="col-md-3 my-2">
                         <select name="condition" class="form-control select2">
                             <option selected disabled>Condition</option>
-                            <option value="New">New</option>
-                            <option value="Use">Use</option>
+                            <option {{ request('condition') == 'New' ? 'selected' : '' }} value="New">New</option>
+                            <option {{ request('condition') == 'Use' ? 'selected' : '' }} value="Use">Use</option>
                         </select>
                     </div>
                     <div class="col-md-3 my-2">
