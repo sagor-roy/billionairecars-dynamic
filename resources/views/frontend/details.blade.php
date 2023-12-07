@@ -6,6 +6,27 @@
             color: red;
             font-size: 14px;
         }
+
+        .show-more-content {
+            overflow: hidden;
+            max-height: 250px; /* Adjust the max height based on your needs */
+            position: relative;
+        }
+
+        .show-more-content.expanded {
+            max-height: none;
+        }
+
+        .show-more-trigger {
+            display: block;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: white;
+            padding: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
     </style>
 @endpush
 

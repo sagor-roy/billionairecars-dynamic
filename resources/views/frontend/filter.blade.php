@@ -5,7 +5,7 @@
         <div class="container-lg">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Search</li>
                 </ol>
             </nav>
@@ -14,6 +14,11 @@
 
     <section class="filter_section">
         <div class="container-lg">
+            @if (request('type'))
+                <div class="heading_title">
+                    <h1 class="text-uppercase">{{ request('type') }} Vehicles</h1>
+                </div>
+            @endif
             <form action="">
                 <div class="row">
                     <div class="col-md-3 my-2">
