@@ -9,7 +9,8 @@
 
         .show-more-content {
             overflow: hidden;
-            max-height: 250px; /* Adjust the max height based on your needs */
+            max-height: 250px;
+            /* Adjust the max height based on your needs */
             position: relative;
         }
 
@@ -555,7 +556,12 @@
     <script src="{{ asset('assets') }}/js/slick.min.js"></script>
     <script src="{{ asset('assets') }}/js/venobox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-
+    <script>
+        $('.venobox').venobox({
+            spinner: 'wave',
+            spinColor: '#cb9a00',
+        });
+    </script>
     <script>
         $(document).ready(function() {
             $("#contactForm").validate({
@@ -594,7 +600,8 @@
                             // Reset the form validation state
                             $(form).validate().resetForm();
                             $("#submitButton").prop("disabled", false);
-                            let alert = `<div class="alert alert-success alert-dismissible fade show" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg><strong>Thank you!!</strong> We will contact with you!! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
+                            let alert =
+                                `<div class="alert alert-success alert-dismissible fade show" role="alert"><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg><strong>Thank you!!</strong> We will contact with you!! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`;
                             $('#alert_message').html(alert);
                         },
                         error: function(error) {

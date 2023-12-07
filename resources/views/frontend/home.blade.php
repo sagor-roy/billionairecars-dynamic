@@ -14,35 +14,40 @@
                 <div class="row mt-5 justify-content-center">
                     <div class="col-md-7">
                         <div class="card p-3 px-4 filter">
-                            <form action="">
+                            <form action="{{ route('vehicles_filter') }}" id="filterForm">
                                 <div class="row">
                                     <div class="col-md-10 pe-md-1">
                                         <div class="row">
                                             <div class="col-md-4 px-md-1 mt-2 mt-md-0 position-relative">
-                                                <select name="" class="form-control position-relative select2">
-                                                    <option value="">All Makes</option>
-                                                    <option value="">All Models</option>
-                                                    <option value="">Max Price</option>
+                                                <select name="brand" required
+                                                    class="form-control position-relative select2">
+                                                    <option selected disabled>All Brand</option>
+                                                    @foreach ($brands as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->brand_name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="col-md-4 px-md-1 mt-2 mt-md-0 position-relative">
-                                                <select name="" class="form-control position-relative select2">
-                                                    <option value="">All Models</option>
-                                                    <option value="">All Models</option>
-                                                    <option value="">Max Price</option>
+                                                <select name="model" disabled
+                                                    class="form-control position-relative select2">
+                                                    <option selected disabled>All Model</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-4 ps-md-1 mt-2 mt-md-0 position-relative">
-                                                <select name="" class="form-control position-relative select2">
-                                                    <option value="">Max Price</option>
-                                                    <option value="">All Makes</option>
-                                                    <option value="">All Makes</option>
+                                                <select name="price" class="form-control select2 position-relative">
+                                                    <option selected disabled>Max Price</option>
+                                                    <option value="30000">$30,000</option>
+                                                    <option value="50000">$50,000</option>
+                                                    <option value="75000">$75,000</option>
+                                                    <option value="100000">$1,000,00</option>
+                                                    <option value="1500000">$1,50,0000</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-2 px-md-1 mt-2 mt-md-0">
-                                        <button class="filer_form_button"><i class="fas fa-search"></i></button>
+                                        <button style="cursor: not-allowed" class="filer_form_button" id="filterButton"
+                                            disabled><i class="fas fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -171,7 +176,8 @@
                                 @endif
                             @endforeach
                             <div class="col-lg-6 mt-4 social_media_with_btn">
-                                <a href="{{ route('vehicles_filter') }}?type=premium" class="add_list_button d-md-none text-center w-100"> View {{ $totalPremium }} New</a>
+                                <a href="{{ route('vehicles_filter') }}?type=premium"
+                                    class="add_list_button d-md-none text-center w-100"> View {{ $totalPremium }} New</a>
                             </div>
                         </div>
                     </div>`
@@ -196,7 +202,8 @@
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                     </li>
                 </ul>
-                <a href="{{ route('vehicles_filter') }}?type=premium" class="add_list_button d-none d-md-block"> View {{ $totalPremium }} New</a>
+                <a href="{{ route('vehicles_filter') }}?type=premium" class="add_list_button d-none d-md-block"> View
+                    {{ $totalPremium }} New</a>
             </div>
         </div>
     </section>
@@ -242,7 +249,8 @@
                             <div class="button-next"><i class="fas fa-chevron-right"></i></div>
                         </div>
                         <div class="social_media_with_btn">
-                            <a href="{{ route('vehicles_filter') }}?type=commercial" class="add_list_button d-none d-md-block"> View All</a>
+                            <a href="{{ route('vehicles_filter') }}?type=commercial"
+                                class="add_list_button d-none d-md-block"> View All</a>
                         </div>
                     </div>
                 </div>
@@ -287,6 +295,19 @@
 
 @push('script')
     <script>
+        $(document).ready(function() {
+            // Event listener for brand select changes
+            $('select[name="brand"]').on('change', function() {
+                // Check if a brand is selected
+                let isBrandSelected = $(this).val() !== null;
+
+                // Enable or disable the submit button based on brand selection
+                $('#filterButton').prop('disabled', !isBrandSelected).css('cursor', isBrandSelected ?
+                    'pointer' : 'not-allowed');
+            });
+        });
+
+
         // Load the YouTube IFrame Player API asynchronously
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
@@ -321,4 +342,5 @@
             // You can do additional actions here if needed
         }
     </script>
+    @include('frontend.script')
 @endpush

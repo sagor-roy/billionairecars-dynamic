@@ -24,8 +24,10 @@ class HomeController extends Controller
         $faqs = Cache::remember("faqs", env('CACHE_TIME'), function () {
             return DB::table('faq')->where(['status' => 1])->get();
         });
+
+        $brands = Brand::all();
         //return $commercial_products;
-        return view("frontend.home", compact("premium_products", "commercial_products", "faqs", "totalPremium"));
+        return view("frontend.home", compact("premium_products", "commercial_products", "faqs", "totalPremium","brands"));
     }
 
     public function details($slug)
@@ -83,6 +85,9 @@ class HomeController extends Controller
             })
             ->when(!empty($request->color), function ($query) use ($request) {
                 $query->where('color', $request->color);
+            })
+            ->when(!empty($request->price), function ($query) use ($request) {
+                $query->where('price', '<=', $request->price);
             })
             ->paginate(8);
         //return $products;

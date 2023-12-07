@@ -89,9 +89,6 @@
 		});
 	});
 
-	$('.venobox').venobox({
-		spinner: 'wave',
-		spinColor: '#cb9a00',
-	});
+	
 
 })(jQuery);
