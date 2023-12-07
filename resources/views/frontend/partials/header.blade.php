@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-md px-4 p-md-0">
         <div class="container-lg">
             <a class="navbar-brand logo" href="{{ url('/') }}">
-                <img src="https://billionairecars.nl/wp-content/uploads/2022/07/Middel-1-1.png" alt="logo">
+                <img src="{{ asset('assets/img/logo.png') }}" alt="logo">
             </a>
             <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbar"><i class="fas fa-bars"></i></span>

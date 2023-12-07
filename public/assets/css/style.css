@@ -1388,6 +1388,28 @@ a.blog_read_button {
     font-weight: 700;
 }
 
+/* Back to Top Button Styles */
+#backToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    background-color: #e4cd66;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 99;
+    box-shadow: 0 2px 5px 1px #aaa;
+}
+
+#backToTopBtn:hover {
+    background-color: #e4cd66;
+}
+
+
 .feature table {
     width: 100% !important;
 }

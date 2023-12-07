@@ -174,8 +174,7 @@
                     </div>
 
                     <div class="contact_with_admin d-md-none">
-                        <a href="#" class="call"><i class="fas fa-phone-alt"></i>
-                            123 *** ***- reveal</a>
+                        <a href="tel:+31649810044" class="call"><i class="fas fa-phone-alt"></i> +31 6 498 100 44</a>
                         <a href="https://api.whatsapp.com/send?phone=31649810044&text=Hallo%20Billionaire%20cars%2C"
                             class="whatsapp"><i class="fab fa-whatsapp"></i> Chat Via Whatsapp</a>
                         <a href="#send_message" class="message">Send Message</a>
@@ -435,8 +434,8 @@
                     </div>
 
                     <div class="contact_with_admin d-none d-md-block">
-                        <a href="#" class="call"><i class="fas fa-phone-alt"></i>
-                            123 *** ***- reveal</a>
+                        <a href="tel:+31649810044" class="call"><i class="fas fa-phone-alt"></i> +31 6 498 100 44</a>
+
                         <a href="https://api.whatsapp.com/send?phone=31649810044&text=Hallo%20Billionaire%20cars%2C"
                             class="whatsapp"><i class="fab fa-whatsapp"></i> Chat Via Whatsapp</a>
                         <a href="#send_message" class="message">Send Message</a>
