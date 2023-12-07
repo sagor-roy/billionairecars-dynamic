@@ -7,10 +7,8 @@
         </div>
         <div class="content">
             <div class="container">
-                <h1 class="head_title">
-                    Billionaire <span>Cars</span>
-                </h1>
-                <p>Enjoy Luxury Alone</p>
+                <h1 class="head_title">{!! $home_slider->header !!}</h1>
+                <p>{{ $home_slider->title }}</p>
                 <div class="row mt-5 justify-content-center">
                     <div class="col-md-7">
                         <div class="card p-3 px-4 filter">
@@ -297,16 +295,14 @@
     <script>
         $(document).ready(function() {
             // Event listener for brand select changes
-            $('select[name="brand"]').on('change', function() {
+            $('select[name="brand"], select[name="price"]').on('change', function() {
                 // Check if a brand is selected
                 let isBrandSelected = $(this).val() !== null;
-
                 // Enable or disable the submit button based on brand selection
                 $('#filterButton').prop('disabled', !isBrandSelected).css('cursor', isBrandSelected ?
                     'pointer' : 'not-allowed');
             });
         });
-
 
         // Load the YouTube IFrame Player API asynchronously
         var tag = document.createElement('script');
@@ -321,8 +317,8 @@
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
                 height: '390',
-                width: '640',
-                videoId: '3mhtR0dPkBk',
+                width: '100%',
+                videoId: "{{ $home_slider->video_code }}",
                 playerVars: {
                     'autoplay': 1,
                     'mute': 1,

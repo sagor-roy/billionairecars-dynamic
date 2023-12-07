@@ -20,14 +20,15 @@ class HomeController extends Controller
         $commercial_products = Cache::remember("commercial_products", env('CACHE_TIME'), function () {
             return Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')->with('brands')->where(['status' => 1, 'type' => 'Commercial'])->limit(10)->orderBy('id', 'desc')->get();
         });
-
         $faqs = Cache::remember("faqs", env('CACHE_TIME'), function () {
             return DB::table('faq')->where(['status' => 1])->get();
         });
-
+        $home_slider = Cache::remember('home_slider', env('CACHE_TIME'), function () {
+            return DB::table('home_slider')->first();
+        });
         $brands = Brand::all();
         //return $commercial_products;
-        return view("frontend.home", compact("premium_products", "commercial_products", "faqs", "totalPremium","brands"));
+        return view("frontend.home", compact("premium_products", "commercial_products", "faqs", "totalPremium","brands","home_slider"));
     }
 
     public function details($slug)

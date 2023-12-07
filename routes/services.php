@@ -19,4 +19,9 @@ Route::resource('services/adminfaqs','Services\AdminfaqsController');
 Route::resource('services/admincontact','Services\AdmincontactController');
 // End Routes for admincontact 
 
+                    
+// Start Routes for adminhomeslider 
+Route::resource('services/adminhomeslider','Services\AdminhomesliderController');
+// End Routes for adminhomeslider 
+
                     ?>

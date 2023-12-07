@@ -34,7 +34,7 @@
 				
 					<tr>
 						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Brand', (isset($fields['brand']['language'])? $fields['brand']['language'] : array())) }}</td>
-						<td>{{ $row->brand}} </td>
+						<td>{{ FormaterHelper::brandName($row->brand) }} </td>
 						
 					</tr>
 				
