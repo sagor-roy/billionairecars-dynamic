@@ -89,10 +89,18 @@ class HomeController extends Controller
         return response()->json(view('frontend.load.product', compact('products'))->render());
     }
 
-    public function vehicles_filter()
+    public function vehicles_filter(Request $request)
     {
         $brands = Brand::all();
-        return view('frontend.filter', compact('brands'));
+        $products = Product::where(['status' => 1])
+            ->when(!empty($request->type), function ($query) use ($request) {
+                $query->where('type', $request->type);
+            })->get();
+
+        $new_condition = $products->where('conditions', 'New')->count();
+        $use_condition = $products->where('conditions', 'Use')->count();
+        $all_condition = $products->count();
+        return view('frontend.filter', compact('brands', 'new_condition', 'use_condition', 'all_condition'));
     }
 
     public function model_filter(Request $request)

@@ -7,8 +7,10 @@
         </li> --}}
         <li>
             <span class="d-none d-md-block">Sort by:</span>
-            <select name="" class="form-control" id="">
-                <option value="">Date Listed: New</option>
+            <select id="sortBy" class="form-control">
+                <option selected disabled>Date Listed: Newest</option>
+                <option value="price_low">Price: Low to High</option>
+                <option value="price_high">Price: High to Low</option>
             </select>
         </li>
     </ul>
@@ -18,7 +20,9 @@
     @if (count($products) > 0)
         <div class="row search_card">
             @foreach ($products as $item)
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2"
+                    data-price="{{ $item->price }}">
+
                     <a href="{{ route('details', $item->slug) }}">
                         <div class="card border-0 sm_card product_card">
                             <div class="product-image">
@@ -43,7 +47,7 @@
                 </div>
             @endforeach
         </div>
-        @else
+    @else
         <div class="text-center text-muted py-5">
             <h4>No Data Found</h4>
         </div>
@@ -88,3 +92,38 @@
         </ul>
     </nav>
 @endif
+
+
+<script>
+    // sorting
+    // Event listener for sorting
+    $('#sortBy').on('change', function() {
+        sortProducts($(this).val());
+    });
+
+    // Function to sort products based on the selected criteria
+    function sortProducts(criteria) {
+        let products = $('.search_card .col-12');
+
+        switch (criteria) {
+            case 'price_low':
+                // Sorting logic based on price low to high
+                products.sort(function(a, b) {
+                    return parseFloat($(a).data('price')) - parseFloat($(b).data('price'));
+                });
+                break;
+            case 'price_high':
+                // Sorting logic based on price high to low
+                products.sort(function(a, b) {
+                    return parseFloat($(b).data('price')) - parseFloat($(a).data('price'));
+                });
+                break;
+            default:
+                // Default sorting (you can customize this)
+                break;
+        }
+
+        // Update the DOM with sorted products
+        $('.search_card').html(products);
+    }
+</script>

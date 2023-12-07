@@ -75,18 +75,27 @@
                         </select>
                     </div>
                 </div>
-                <a href="{{ request()->fullUrl() }}" class="float-end">Clear All <i class="fas fa-times text-danger"></i></a>
+                <a href="{{ request()->fullUrl() }}" class="float-end">Clear All <i
+                        class="fas fa-times text-danger"></i></a>
             </form>
+            @php
+                $isType = request('type');
+            @endphp
             <div class="filtr_list">
                 <ul class="list">
-                    <li class="">
-                        <a href="#">All <span>(44)</span></a>
+                    <li class="{{ \Route::is('vehicles_filter') && request('condition') == '' ? 'active' : '' }}">
+                        <a href="{{ route('vehicles_filter') }}{{ $isType ? '?type=' . $isType : '' }}">All
+                            <span>({{ $all_condition }})</span></a>
                     </li>
-                    <li class="active">
-                        <a href="#">New <span>(44)</a>
+                    <li class="{{ request('condition') == 'New' ? 'active' : '' }}">
+                        <a
+                            href="{{ route('vehicles_filter') }}{{ $isType ? '?type=' . $isType . '&condition=New' : '?condition=New' }}">New
+                            <span>({{ $new_condition }})</a>
                     </li>
-                    <li>
-                        <a href="#">Use <span>(44)</a>
+                    <li class="{{ request('condition') == 'Use' ? 'active' : '' }}">
+                        <a
+                            href="{{ route('vehicles_filter') }}{{ $isType ? '?type=' . $isType . '&condition=Use' : '?condition=Use' }}">Use
+                            <span>({{ $use_condition }})</a>
                     </li>
                 </ul>
 
