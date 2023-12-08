@@ -119,4 +119,28 @@ class HomeController extends Controller
             'model' => $models->pluck('model')->toArray()
         ]);
     }
+
+    public function car_plan()
+    {
+        $blogs = Cache::remember("blogs", env('CACHE_TIME'), function () {
+            return DB::table('blog')->where(['status' => 1])->get();
+        });
+        return view('frontend.blog', compact('blogs'));
+    }
+
+    public function faq()
+    {
+        $faqs = Cache::remember("faqs", env('CACHE_TIME'), function () {
+            return DB::table('faq')->where(['status' => 1])->get();
+        });
+        return view('frontend.faq', compact('faqs'));
+    }
+
+    public function blog_details($slug)
+    {
+        $details = Cache::remember("blog_details_$slug", env('CACHE_TIME'), function () use ($slug) {
+            return DB::table('blog')->where(['status' => 1, 'slug'=> $slug])->first();
+        });
+        return view('frontend.blog_details', compact('details'));
+    }
 }

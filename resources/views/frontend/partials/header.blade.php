@@ -19,10 +19,10 @@
                         <a class="nav-link" href="{{ route('vehicles_filter') }}?type=commercial">Commercial Vehicles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Billionaire Car Plan</a>
+                        <a class="nav-link" href="{{ route('car_plan') }}">Billionaire Car Plan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">FAQ</a>
+                        <a class="nav-link" href="{{ route('faq') }}">FAQ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>

@@ -1366,7 +1366,7 @@ a.blog_title:hover {
 }
 
 a.blog_read_button {
-    background-color: red;
+    background-color: #e4cd66;
     display: inline-block;
     padding: 12px 15px;
     color: white;
@@ -1407,6 +1407,24 @@ a.blog_read_button {
 
 #backToTopBtn:hover {
     background-color: #e4cd66;
+}
+
+.short_car_plan h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.short_car_plan p {
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.blog_description ul {
+    list-style: disc;
+    padding-left: 20px;
 }
 
 

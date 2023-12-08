@@ -26,6 +26,9 @@ Route::post('/contact-message', [HomeController::class,'contact_message']);
 Route::get('/vehicles', [HomeController::class,'vehicles_filter'])->name('vehicles_filter');
 Route::get('/filter', [HomeController::class,'filter'])->name('filter');
 Route::get('/model-filter', [HomeController::class,'model_filter']);
+Route::get('/financing-through-billionaire-car-plan', [HomeController::class,'car_plan'])->name('car_plan');
+Route::get('/faq', [HomeController::class,'faq'])->name('faq');
+Route::get('/car-plan/{slug}', [HomeController::class,'blog_details'])->name('blog_details');
 
 Route::get('dashboard/import', 'DashboardController@getImport');
 /* Auth & Profile */
