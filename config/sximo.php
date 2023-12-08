@@ -1,9 +1,9 @@
 <?php 
 return [
-'cnf_appname' 			=> 'Sample Website',
-'cnf_appdesc' 			=> 'Adminyzen Panel',
-'cnf_comname' 			=> 'Analyzen Bangladesh',
-'cnf_email' 			=> 'info@analyzenbd.com',
+'cnf_appname' 			=> 'Billionaire Car Website',
+'cnf_appdesc' 			=> 'Billionaire Panel',
+'cnf_comname' 			=> 'Billionaire Car',
+'cnf_email' 			=> 'info@billionairecars.nl',
 'cnf_metakey' 			=> 'my site , my company  , Larvel Crud',
 'cnf_metadesc' 		=> 'Write description for your site',
 'cnf_group' 			=> '3',
@@ -18,7 +18,7 @@ return [
 'cnf_recaptchapublickey' => '6Ld5JEUcAAAAAI0jer7m4DWcNJqQ2xMV9KSOvmhP',
 'cnf_recaptchaprivatekey' => '6Ld5JEUcAAAAAJeLC3nz9tk2x6deRAnyPk5V77cP',
 'cnf_mode' 			=> 'production',
-'cnf_logo' 			=> 'backend-logo.jpg',
+'cnf_logo' 			=> 'backend-logo.png',
 'cnf_allowip' 			=> '',
 'cnf_restrictip' 		=> '192.116.134 , 194.111.606.21',
 'cnf_mail' 			=> 'swift',

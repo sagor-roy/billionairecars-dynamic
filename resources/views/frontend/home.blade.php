@@ -7,10 +7,10 @@
         </div>
         <div class="content">
             <div class="container">
-                <h1 class="head_title wow animate__flipInX" data-wow-duration="1s">{!! $home_slider->header !!}</h1>
-                <p class="wow animate__flipInX" data-wow-duration="1.3s">{{ $home_slider->title }}</p>
+                <h1 class="head_title" data-wow-duration="1s">{!! $home_slider->header !!}</h1>
+                <p data-wow-duration="1.3s">{{ $home_slider->title }}</p>
                 <div class="row mt-5 justify-content-center">
-                    <div class="col-md-7 wow animate__flipInX" data-wow-duration="1.5s">
+                    <div class="col-md-7" data-wow-duration="1.5s">
                         <div class="card p-3 px-4 filter">
                             <form action="{{ route('vehicles_filter') }}" id="filterForm">
                                 <div class="row">
