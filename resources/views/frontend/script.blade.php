@@ -36,6 +36,10 @@
             let type = $('select[name="type"]').val();
             let price = $('select[name="price"]').val();
 
+            // before product load
+            let before_load = `<div class="text-center py-5"><h4>Loading....</h4></div>`;
+            $('#product_with_result').html(before_load);
+
             $.ajax({
                 type: "GET",
                 url: "{{ url('/filter') }}",
