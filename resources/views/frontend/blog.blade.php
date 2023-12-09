@@ -37,7 +37,7 @@
                     <div class="col-md-4 my-3">
                         <div class="card blog_card shadow-sm">
                             <div class="product-image">
-                                <a href="#">
+                                <a href="{{ route('blog_details', $item->slug) }}">
                                     <img src="{{ asset('uploads/blog/' . $item->thumbnail) }}" class="img-fluid d-block"
                                         alt="img">
                                 </a>
