@@ -44,7 +44,6 @@
                             </div>
                             <div class="blog_card_body">
                                 <a href="#" class="blog_title mb-2 d-inline-block">{{ $item->title }}</a>
-
                                 <p>{{ $item->short_description }}</p>
                                 <a href="{{ route('blog_details', $item->slug) }}" class="blog_read_button">Read More</a>
                             </div>

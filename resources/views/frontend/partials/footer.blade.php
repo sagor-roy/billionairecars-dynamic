@@ -3,14 +3,14 @@
         <div class="row pb-1">
             <div class="col-md-6">
                 <div class="row">
-                    <div class="col-md-3 text-center text-md-start wow animate__slideInLeft" data-wow-duration="1s">
+                    <div class="col-md-3 text-center text-md-start" data-wow-duration="1s">
                         <a class="navbar-brand" href="{{ url('/') }}">
                             <img src="{{ asset('assets/img/logo.png') }}"
                                 width="100" alt="logo">
                         </a>
                     </div>
 
-                    <div class="col-md-5 wow animate__slideInLeft" data-wow-duration="1.1s">
+                    <div class="col-md-5" data-wow-duration="1.1s">
                         <ul class="footer_list">
                             <li><a href="#"><i class="fas fa-circle"></i> All Vehicles</a></li>
                             <li><a href="#"><i class="fas fa-circle"></i> Commercial Vehicles</a></li>
@@ -18,7 +18,7 @@
                             </a></li>
                         </ul>
                     </div>
-                    <div class="col-md-4 wow animate__slideInLeft" data-wow-duration="1.2s">
+                    <div class="col-md-4" data-wow-duration="1.2s">
                         <ul class="footer_list">
                             <li><a href="#"><i class="fas fa-circle"></i> FAQ
                             </a></li>
@@ -30,10 +30,10 @@
             </div>
             <div class="col-md-6 text-center mt-5 mt-md-0">
                 <div class="row">
-                    <div class="col-md-6 wow animate__slideInLeft" data-wow-duration="1.3s">
+                    <div class="col-md-6" data-wow-duration="1.3s">
                         <p class="footer_pera">Dit is de plaats om premium auto's te kopen als particulier of bedrijf.</p>
                     </div>
-                    <div class="col-md-6 mt-5 mt-md-0 wow animate__slideInLeft" data-wow-duration="1.4s">
+                    <div class="col-md-6 mt-5 mt-md-0" data-wow-duration="1.4s">
                         <div class="text-md-end text-center">
                             <h2><span style="color: #E4CD66;">+31 6 498 100 44
                             </span></h2>
@@ -46,7 +46,7 @@
             </div>
         </div>
         <hr class="my-5">
-        <p><a href="https://billionairecars.nl" class="text-warning wow animate__slideInLeft" data-wow-duration="1s">billionairecars.nl</a> © All rights reserved
+        <p><a href="https://billionairecars.nl" class="text-warning" data-wow-duration="1s">billionairecars.nl</a> © All rights reserved
         </p>
     </div>
 </footer>

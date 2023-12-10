@@ -25,13 +25,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <div class="head_title mb-4 wow animate__slideInLeft" data-wow-duration="1s">
+                    <div class="head_title mb-4" data-wow-duration="1s">
                         <h1>Frequently Asked Questions
                         </h1>
                     </div>
                     <div class="accordion accordion-flush" id="faqlist">
                         @foreach ($faqs as $key=> $item)
-                            <div class="accordion-item wow animate__slideInLeft" data-wow-duration="1.{{ $key+1 }}s">
+                            <div class="accordion-item" data-wow-duration="1.{{ $key+1 }}s">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button {{ !$loop->first ? 'collapsed' : '' }}"
                                         type="button" data-bs-toggle="collapse"

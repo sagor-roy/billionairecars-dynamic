@@ -29,6 +29,7 @@ Route::get('/model-filter', [HomeController::class,'model_filter']);
 Route::get('/financing-through-billionaire-car-plan', [HomeController::class,'car_plan'])->name('car_plan');
 Route::get('/faq', [HomeController::class,'faq'])->name('faq');
 Route::get('/car-plan/{slug}', [HomeController::class,'blog_details'])->name('blog_details');
+Route::get('/contact', [HomeController::class,'contact'])->name('contact');
 
 Route::get('dashboard/import', 'DashboardController@getImport');
 /* Auth & Profile */

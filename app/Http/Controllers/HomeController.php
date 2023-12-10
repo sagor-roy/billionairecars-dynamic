@@ -143,4 +143,9 @@ class HomeController extends Controller
         });
         return view('frontend.blog_details', compact('details'));
     }
+
+    public function contact()
+    {
+        return view('frontend.contact');
+    }
 }
