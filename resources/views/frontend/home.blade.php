@@ -178,7 +178,7 @@
                             <div class="col-lg-6 mt-4 social_media_with_btn  wow animate__slideInRight"
                             data-wow-duration="1s">
                                 <a href="{{ route('vehicles_filter') }}?type=premium"
-                                    class="add_list_button d-md-none text-center w-100"> View {{ $totalPremium }} New</a>
+                                    class="add_list_button d-md-none text-center w-100"> View All</a>
                             </div>
                         </div>
                     </div>`
@@ -203,8 +203,7 @@
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                     </li>
                 </ul>
-                <a href="{{ route('vehicles_filter') }}?type=premium" class="add_list_button d-none d-md-block wow animate__slideInRight" data-wow-duration="1s"> View
-                    {{ $totalPremium }} New</a>
+                <a href="{{ route('vehicles_filter') }}?type=premium" class="add_list_button d-none d-md-block wow animate__slideInRight" data-wow-duration="1s"> View All</a>
             </div>
         </div>
     </section>

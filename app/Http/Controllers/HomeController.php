@@ -8,39 +8,50 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
+use function PHPUnit\Framework\returnValue;
+
 class HomeController extends Controller
 {
     public function index()
     {
-        $products = Cache::remember("premium_products", env('CACHE_TIME'), function () {
-            return Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')->with('brands')->where(['status' => 1, 'type' => 'Premium'])->orderBy('id', 'desc');
+        return Cache::remember("home", env('CACHE_TIME'), function () {
+            $premium_products = Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')
+                ->with('brands')
+                ->where(['status' => 1, 'type' => 'Premium'])
+                ->orderBy('id', 'desc')
+                ->limit(5)
+                ->get();
+
+            $commercial_products = Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')
+                ->with('brands')
+                ->where(['status' => 1, 'type' => 'Commercial'])
+                ->limit(10)
+                ->orderBy('id', 'desc')
+                ->get();
+
+            $faqs = DB::table('faq')->where(['status' => 1])->get();
+            $home_slider = DB::table('home_slider')->first();
+            $brands = Brand::all();
+
+            return view("frontend.home", compact("premium_products", "commercial_products", "faqs", "brands", "home_slider"))->render();
         });
-        $premium_products = $products->limit(5)->get();
-        $totalPremium = $products->count();
-        $commercial_products = Cache::remember("commercial_products", env('CACHE_TIME'), function () {
-            return Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')->with('brands')->where(['status' => 1, 'type' => 'Commercial'])->limit(10)->orderBy('id', 'desc')->get();
-        });
-        $faqs = Cache::remember("faqs", env('CACHE_TIME'), function () {
-            return DB::table('faq')->where(['status' => 1])->get();
-        });
-        $home_slider = Cache::remember('home_slider', env('CACHE_TIME'), function () {
-            return DB::table('home_slider')->first();
-        });
-        $brands = Brand::all();
-        //return $commercial_products;
-        return view("frontend.home", compact("premium_products", "commercial_products", "faqs", "totalPremium","brands","home_slider"));
     }
+
 
     public function details($slug)
     {
-        $details = Cache::remember("products_details_$slug", env('CACHE_TIME'), function () use ($slug) {
-            return Product::with('brands')->where(['status' => 1, 'slug' => $slug])->firstOrFail();
+        return Cache::remember("details_$slug", env('CACHE_TIME'), function () use ($slug) {
+            $details = Product::with('brands')->where(['status' => 1, 'slug' => $slug])->firstOrFail();
+
+            $related_vehicles = Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')
+                ->with('brands')
+                ->where(['brand' => $details->brand, 'status' => 1])
+                ->limit(10)
+                ->orderBy('id', 'desc')
+                ->get();
+
+            return view('frontend.details', compact('details', 'related_vehicles'))->render();
         });
-        $related_vihicles = Cache::remember("related_vihicles_$details->id", env('CACHE_TIME'), function () use ($details) {
-            return Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')->with('brands')->where(['brand' => $details->brand, 'status' => 1])->limit(10)->orderBy('id', 'desc')->get();
-        });
-        //return $related_vihicles;
-        return view('frontend.details', compact('details', 'related_vihicles'));
     }
 
     public function contact_message(Request $request)
@@ -139,7 +150,7 @@ class HomeController extends Controller
     public function blog_details($slug)
     {
         $details = Cache::remember("blog_details_$slug", env('CACHE_TIME'), function () use ($slug) {
-            return DB::table('blog')->where(['status' => 1, 'slug'=> $slug])->first();
+            return DB::table('blog')->where(['status' => 1, 'slug' => $slug])->first();
         });
         return view('frontend.blog_details', compact('details'));
     }

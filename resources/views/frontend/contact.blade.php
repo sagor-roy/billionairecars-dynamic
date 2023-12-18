@@ -28,9 +28,9 @@
                         </p>
                     </div>
 
-                    <div class="social_media_with_btn pt-4">
+                    <div class="social_media_with_btn pt-4 justify-content-start">
                         <ul class="" data-wow-duration="1s">
-                            <li class="d-none d-md-block">Follow Us</li>
+                            <li>Follow Us</li>
                             <li>
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                             </li>
@@ -43,8 +43,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <section class="contact__form px-5" style="border-radius: 20px" id="send_message">
+                <div class="col-md-6 mt-5 mt-md-0">
+                    <section class="contact__form contact px-5" style="border-radius: 20px" id="send_message">
                         <h4 class="mb-4">Contactformulier</h4>
                         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
                             <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -94,6 +94,12 @@
     </script>
     <script>
         $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            
             $("#contactForm").validate({
                 rules: {
                     name: "required",

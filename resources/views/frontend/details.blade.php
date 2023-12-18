@@ -509,13 +509,13 @@
         </div>
     </section>
 
-    @if (count($related_vihicles) > 0)
+    @if (count($related_vehicles) > 0)
         <section class="mt-5">
             <div class="container-lg">
                 <h4 class="mb-4">Related Vehicles</h4>
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-                        @foreach ($related_vihicles as $key => $item)
+                        @foreach ($related_vehicles as $key => $item)
                             <div class="swiper-slide">
                                 <a href="{{ route('details', $item->slug) }}">
                                     <div class="card border-0 sm_card product_card">
@@ -563,6 +563,12 @@
     </script>
     <script>
         $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
             $("#contactForm").validate({
                 rules: {
                     name: "required",

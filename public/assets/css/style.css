@@ -1507,11 +1507,16 @@ tr {
 
 
 .loader {
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    background-color: beige;
+    inset: 0;
 }
 
 .car__body {
@@ -1618,4 +1623,8 @@ tr {
 .loader p {
     line-height: 0px;
     margin: 20px 0px 0px 35px;
+}
+
+section.contact__form.contact {
+    padding: 30px 20px !important;
 }
