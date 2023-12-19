@@ -18,9 +18,8 @@ Route::get('/clear-cache', function () {
 	return "Cache is cleared";
 });
 
-Route::get('setlocale/{locale}', function (Request $request, $lang) {
-	return session('lang');
-	$lang = ($lang == 'eng') ? $lang : 'nl';
+Route::get('lang/{locale}', function (Request $request, $lang) {
+	$lang = ($lang == 'en') ? $lang : 'nl';
 	$request->session()->put('lang', $lang);
 	\App::setLocale($lang);
 	return redirect()->back();

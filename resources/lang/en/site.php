@@ -60,5 +60,13 @@ return array(
 	"engine_size" => "Engine Size",
 	"doors" => "Doors",
 	"cylinders" => "Cylinders",
-	"vin" => "VIN"
+	"vin" => "VIN",
+	"search" => "Search",
+	"make" => "Make",
+	"model_1" => "Model",
+	"via" => "Financing Via Billionaire Cars",
+	"autolease" => "BILLIONAIRE CARLEASE",
+	"via_details" => "Because of our low rates, there is no better time to choose financing your car now. Our employees are therefore happy to welcome you to our showroom to help you find the perfect used car, in combination with tailor-made financing that suits you. You choose a car, we take care of the rest. A simple, fast and transparent process. Exactly as you would expect from us.
+	",
+	"read_more" => "Read More"
 	);

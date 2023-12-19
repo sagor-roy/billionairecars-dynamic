@@ -5,8 +5,8 @@
         <div class="container-lg">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Search</li>
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('site.home') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('site.search') }}</li>
                 </ol>
             </nav>
         </div>
@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-md-3 my-2">
                         <select name="brand" class="form-control select2">
-                            <option selected disabled>All Brand</option>
+                            <option selected disabled>{{ __('site.brand') }}</option>
                             @foreach ($brands as $item)
                                 <option {{ request('brand') == $item->id ? 'selected' : '' }} value="{{ $item->id }}">
                                     {{ $item->brand_name }}</option>
@@ -32,19 +32,19 @@
                     </div>
                     <div class="col-md-3 my-2">
                         <select name="model" disabled class="form-control select2">
-                            <option selected disabled>All Model</option>
+                            <option selected disabled>{{ __('site.model') }}</option>
                         </select>
                     </div>
                     <div class="col-md-3 my-2">
                         <select name="transmission" class="form-control select2">
-                            <option selected disabled>Transmission</option>
+                            <option selected disabled>{{ __('site.transmission') }}</option>
                             <option value="Automaat">Automaat</option>
                             <option value="Handgeschakeld">Handgeschakeld</option>
                         </select>
                     </div>
                     <div class="col-md-3 my-2">
                         <select name="fuel" class="form-control select2">
-                            <option selected disabled>Fuel</option>
+                            <option selected disabled>{{ __('site.fuel') }}</option>
                             <option value="Benzine">Benzine</option>
                             <option value="Diesel">Diesel</option>
                             <option value="Cryogeen">Cryogeen</option>
@@ -54,19 +54,19 @@
                     </div>
                     <div class="col-md-3 my-2">
                         <select name="color" disabled class="form-control select2">
-                            <option selected disabled>Color</option>
+                            <option selected disabled>{{ __('site.color') }}</option>
                         </select>
                     </div>
                     <div class="col-md-3 my-2">
                         <select name="condition" class="form-control select2">
-                            <option selected disabled>Condition</option>
+                            <option selected disabled>{{ __('site.condition') }}</option>
                             <option {{ request('condition') == 'New' ? 'selected' : '' }} value="New">New</option>
                             <option {{ request('condition') == 'Use' ? 'selected' : '' }} value="Use">Use</option>
                         </select>
                     </div>
                     <div class="col-md-3 my-2">
                         <select name="type" class="form-control select2">
-                            <option selected disabled>Vihicles Type</option>
+                            <option selected disabled>{{ __('site.vehicles_types') }}</option>
                             <option {{ request('type') == 'premium' ? 'selected' : '' }} value="Premium">Premium</option>
                             <option {{ request('type') == 'commercial' ? 'selected' : '' }} value="Commercial">Commercial
                             </option>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-md-3 my-2">
                         <select name="price" class="form-control select2">
-                            <option selected disabled>Max Price</option>
+                            <option selected disabled>{{ __('site.price') }}</option>
                             <option {{ request('price') == '30000' ? 'selected' : '' }} value="30000">$30,000</option>
                             <option {{ request('price') == '50000' ? 'selected' : '' }} value="50000">$50,000</option>
                             <option {{ request('price') == '75000' ? 'selected' : '' }} value="75000">$75,000</option>
@@ -84,7 +84,7 @@
                         </select>
                     </div>
                 </div>
-                <a href="{{ request()->fullUrl() }}" class="float-end">Clear All <i
+                <a href="{{ request()->fullUrl() }}" class="float-end">{{ __('site.clear_all') }} <i
                         class="fas fa-times text-danger"></i></a>
             </form>
             @php
@@ -93,17 +93,17 @@
             <div class="filtr_list">
                 <ul class="list">
                     <li class="{{ \Route::is('vehicles_filter') && request('condition') == '' ? 'active' : '' }}">
-                        <a href="{{ route('vehicles_filter') }}{{ $isType ? '?type=' . $isType : '' }}">All
+                        <a href="{{ route('vehicles_filter') }}{{ $isType ? '?type=' . $isType : '' }}">{{ __('site.all') }}
                             <span>({{ $all_condition }})</span></a>
                     </li>
                     <li class="{{ request('condition') == 'New' ? 'active' : '' }}">
                         <a
-                            href="{{ route('vehicles_filter') }}{{ $isType ? '?type=' . $isType . '&condition=New' : '?condition=New' }}">New
+                            href="{{ route('vehicles_filter') }}{{ $isType ? '?type=' . $isType . '&condition=New' : '?condition=New' }}">{{ __('site.new') }}
                             <span>({{ $new_condition }})</a>
                     </li>
                     <li class="{{ request('condition') == 'Use' ? 'active' : '' }}">
                         <a
-                            href="{{ route('vehicles_filter') }}{{ $isType ? '?type=' . $isType . '&condition=Use' : '?condition=Use' }}">Use
+                            href="{{ route('vehicles_filter') }}{{ $isType ? '?type=' . $isType . '&condition=Use' : '?condition=Use' }}">{{ __('site.use') }}
                             <span>({{ $use_condition }})</a>
                     </li>
                 </ul>
@@ -113,7 +113,7 @@
                         <a href="#"><i class="fas fa-exchange-alt"></i> Compare</a>
                     </li> --}}
                     <li>
-                        <input type="search" id="keywordInput" placeholder="Enter keyword">
+                        <input type="search" id="keywordInput" placeholder="{{ __('site.enter_keyword') }}">
                     </li>
                 </ul>
             </div>

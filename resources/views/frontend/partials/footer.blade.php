@@ -13,17 +13,17 @@
 
                     <div class="col-md-5" data-wow-duration="1.1s">
                         <ul class="footer_list">
-                            <li><a href="{{ route('vehicles_filter') }}"><i class="fas fa-circle"></i> All Vehicles</a></li>
-                            <li><a href="{{ route('vehicles_filter') }}?type=commercial"><i class="fas fa-circle"></i> Commercial Vehicles</a></li>
-                            <li><a href="{{ route('car_plan') }}"><i class="fas fa-circle"></i> Billionaire Car Plan
+                            <li><a href="{{ route('vehicles_filter') }}"><i class="fas fa-circle"></i> {{ __('site.all_vehicles') }}</a></li>
+                            <li><a href="{{ route('vehicles_filter') }}?type=commercial"><i class="fas fa-circle"></i> {{ __('site.commercial_vehicles') }}</a></li>
+                            <li><a href="{{ route('car_plan') }}"><i class="fas fa-circle"></i> {{ __('site.billionaire_car_plan') }}
                             </a></li>
                         </ul>
                     </div>
                     <div class="col-md-4" data-wow-duration="1.2s">
                         <ul class="footer_list">
-                            <li><a href="{{ route('faq') }}"><i class="fas fa-circle"></i> FAQ
+                            <li><a href="{{ route('faq') }}"><i class="fas fa-circle"></i> {{ __('site.faq') }}
                             </a></li>
-                            <li><a href="{{ route('contact') }}"><i class="fas fa-circle"></i> Contact
+                            <li><a href="{{ route('contact') }}"><i class="fas fa-circle"></i> {{ __('site.contact') }}
                             </a></li>
                         </ul>
                     </div>

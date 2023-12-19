@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="head_title" data-wow-duration="1s">
-                        <h1>Contact</h1>
+                        <h1> {{ __('site.contact') }}</h1>
                     </div>
                     <p class="my-4">Dit is dé plek om als particulier of bedrijf premium auto’s te kopen. Neem voor meer informatie contact met ons op
                     </p>
@@ -30,7 +30,7 @@
 
                     <div class="social_media_with_btn pt-4 justify-content-start">
                         <ul class="" data-wow-duration="1s">
-                            <li>Follow Us</li>
+                            <li> {{ __('site.follow_us') }}</li>
                             <li>
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                             </li>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-6 mt-5 mt-md-0">
                     <section class="contact__form contact px-5" style="border-radius: 20px" id="send_message">
-                        <h4 class="mb-4">Contactformulier</h4>
+                        <h4 class="mb-4"> {{ __('site.contact_form') }}</h4>
                         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
                             <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
                                 <path
@@ -57,19 +57,19 @@
                         <form id="contactForm">
                             <div class="row">
                                 <div class="col-md-4 my-2">
-                                    <input type="text" class="form-control shadow-sm" placeholder="Name" name="name">
+                                    <input type="text" class="form-control shadow-sm" placeholder=" {{ __('site.name') }}" name="name">
                                 </div>
                                 <div class="col-md-4 my-2">
-                                    <input type="text" class="form-control shadow-sm" placeholder="Email" name="email">
+                                    <input type="text" class="form-control shadow-sm" placeholder=" {{ __('site.email') }}" name="email">
                                 </div>
                                 <div class="col-md-4 my-2">
-                                    <input type="text" class="form-control shadow-sm" placeholder="Phone" name="phone">
+                                    <input type="text" class="form-control shadow-sm" placeholder=" {{ __('site.phone') }}" name="phone">
                                 </div>
                                 <div class="col-12 my-2">
-                                    <textarea name="message" class="form-control shadow-sm" placeholder="Message" rows="10"></textarea>
+                                    <textarea name="message" class="form-control shadow-sm" placeholder=" {{ __('site.message') }}" rows="10"></textarea>
                                 </div>
                             </div>
-                            <button type="submit" id="submitButton" class="send_message_btn">Send</button>
+                            <button type="submit" id="submitButton" class="send_message_btn">{{ __('site.send') }}</button>
                         </form>
                     </section>
                 </div>

@@ -6,7 +6,7 @@
 @section('content')
     <section class="blog_cover">
         <div class="text-center">
-            <h1>Financiering via <span>Billionaire Cars</span></span>
+            <h1>{{ __('site.via') }}
             </h1>
         </div>
     </section>
@@ -15,8 +15,8 @@
         <div class="container-lg">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="#">Financiering via Billionaire Cars</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('site.home') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="#">{{ __('site.via') }}</a></li>
                 </ol>
             </nav>
         </div>
@@ -25,12 +25,8 @@
     <section class="mt-5">
         <div class="container-lg">
             <div class="short_car_plan">
-                <h2>BILLIONAIRE AUTOLEASE</h2>
-                <p>Vanwege onze lage tarieven is er geen betere tijd om nu te kiezen voor een financiering van je auto. Onze
-                    medewerkers ontvangen je daarom dan ook graag in onze showroom om te helpen bij het vinden van de
-                    perfecte occasion, in combinatie met een op maat gemaakte financiering die bij jou past. Jij kiest een
-                    auto, wij regelen de rest. Een simpel, snel en transparant proces. Exact zoals je van ons mag
-                    verwachten.</p>
+                <h2>{{ __('site.autolease') }}</h2>
+                <p>{{ __('site.via_details') }}</p>
             </div>
             <div class="row">
                 @foreach ($blogs as $item)
@@ -45,7 +41,7 @@
                             <div class="blog_card_body">
                                 <a href="#" class="blog_title mb-2 d-inline-block">{{ $item->title }}</a>
                                 <p>{{ $item->short_description }}</p>
-                                <a href="{{ route('blog_details', $item->slug) }}" class="blog_read_button">Read More</a>
+                                <a href="{{ route('blog_details', $item->slug) }}" class="blog_read_button">{{ __('site.read_more') }}</a>
                             </div>
                         </div>
                     </div>

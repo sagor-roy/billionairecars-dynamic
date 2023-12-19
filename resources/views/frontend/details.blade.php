@@ -36,8 +36,8 @@
         <div class="container-lg">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Vehicles Details</a></li>
+                    <li class="breadcrumb-item"><a href="#">{{ __('site.home') }}</a></li>
+                    <li class="breadcrumb-item"><a href="#">{{ __('site.vehicles_details') }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ $details->title }}</li>
                 </ol>
             </nav>
@@ -176,13 +176,13 @@
                     <div class="contact_with_admin d-md-none">
                         <a href="tel:+31649810044" class="call"><i class="fas fa-phone-alt"></i> +31 6 498 100 44</a>
                         <a href="https://api.whatsapp.com/send?phone=31649810044&text=Hallo%20Billionaire%20cars%2C"
-                            class="whatsapp"><i class="fab fa-whatsapp"></i> Chat Via Whatsapp</a>
-                        <a href="#send_message" class="message">Send Message</a>
+                            class="whatsapp"><i class="fab fa-whatsapp"></i> {{ __('site.chat_whatsapp') }}</a>
+                        <a href="#send_message" class="message">{{ __('site.send_message') }}</a>
                     </div>
 
                     @if ($details->short_description)
                         <div class="description mt-5">
-                            <h4 class="mb-3">Description</h4>
+                            <h4 class="mb-3">{{ __('site.description') }}</h4>
                             {!! $details->short_description !!}
                         </div>
                     @endif
@@ -202,7 +202,7 @@
                     </div> --}}
 
                     <div class="feature mt-5">
-                        <h4 class="mb-3">Accessories</h4>
+                        <h4 class="mb-3">{{ __('site.accessories') }}</h4>
                         {!! $details->accessories !!}
                     </div>
 
@@ -212,7 +212,7 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq-content-1">
-                                        License Plate Details
+                                        {{ __('site.license_plate_details') }}
                                     </button>
                                 </h2>
                                 <div id="faq-content-1" class="accordion-collapse collapse show" data-bs-parent="#faqlist">
@@ -226,7 +226,7 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq-content-3">
-                                        Financial Details
+                                        {{ __('site.financial_details') }}
                                     </button>
                                 </h2>
                                 <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
@@ -240,7 +240,7 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq-content-4">
-                                        Technical Data
+                                        {{ __('site.technical_data') }}
                                     </button>
                                 </h2>
                                 <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
@@ -254,7 +254,7 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq-content-5">
-                                        Vehicle Data Specific
+                                        {{ __('site.vehicle_data_specific') }}
                                     </button>
                                 </h2>
                                 <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
@@ -268,7 +268,7 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq-content-7">
-                                        Environmental Data
+                                        {{ __('site.environmental_data') }}
                                     </button>
                                 </h2>
                                 <div id="faq-content-7" class="accordion-collapse collapse" data-bs-parent="#faqlist">
@@ -282,7 +282,7 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq-content-8">
-                                        Comments
+                                        {{ __('site.comments') }}
                                     </button>
                                 </h2>
                                 <div id="faq-content-8" class="accordion-collapse collapse" data-bs-parent="#faqlist">
@@ -296,7 +296,7 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq-content-9">
-                                        Options
+                                        {{ __('site.options') }}
                                     </button>
                                 </h2>
                                 <div id="faq-content-9" class="accordion-collapse collapse" data-bs-parent="#faqlist">
@@ -310,7 +310,7 @@
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#faq-content-10">
-                                        Other Information
+                                        {{ __('site.other_information') }}
                                     </button>
                                 </h2>
                                 <div id="faq-content-10" class="accordion-collapse collapse" data-bs-parent="#faqlist">
@@ -324,7 +324,7 @@
 
                     @if ($details->video_url)
                         <div class="video mt-5">
-                            <h4 class="mb-3">Video</h4>
+                            <h4 class="mb-3"> {{ __('site.video') }}</h4>
                             <iframe class="shadow-sm rounded-3" src="{{ $details->video_url }}"
                                 title="YouTube video player" frameborder="0" width="100%" height="400"
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -335,7 +335,7 @@
 
                     @if ($details->map_location)
                         <div class="map mt-5">
-                            <h4 class="mb-3">Location</h4>
+                            <h4 class="mb-3"> {{ __('site.location') }}</h4>
                             <iframe src="{{ $details->map_location }}" width="100%" height="450" style="border:0;"
                                 allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
@@ -358,73 +358,73 @@
                         <table class="table">
                             @if ($details->brands->brand)
                                 <tr>
-                                    <td>Make:</td>
+                                    <td> {{ __('site.make') }}:</td>
                                     <td>{{ $details->brands->brand }}</td>
                                 </tr>
                             @endif
                             @if ($details->model)
                                 <tr>
-                                    <td>Model:</td>
+                                    <td> {{ __('site.model_1') }}:</td>
                                     <td>{{ $details->model }}</td>
                                 </tr>
                             @endif
                             @if ($details->color)
                                 <tr>
-                                    <td>Color:</td>
+                                    <td> {{ __('site.color') }}:</td>
                                     <td>{{ $details->color }}</td>
                                 </tr>
                             @endif
                             @if ($details->drive_type)
                                 <tr>
-                                    <td>Drive Type:</td>
+                                    <td> {{ __('site.drive_type') }}:</td>
                                     <td>{{ $details->drive_type }}</td>
                                 </tr>
                             @endif
                             @if ($details->transmission)
                                 <tr>
-                                    <td>Transmission:</td>
+                                    <td> {{ __('site.transmission') }}:</td>
                                     <td>{{ $details->transmission }}</td>
                                 </tr>
                             @endif
                             @if ($details->conditions)
                                 <tr>
-                                    <td>Condition:</td>
+                                    <td> {{ __('site.condition') }}:</td>
                                     <td>{{ $details->conditions }}</td>
                                 </tr>
                             @endif
                             @if ($details->year)
                                 <tr>
-                                    <td>Year:</td>
+                                    <td> {{ __('site.year') }}:</td>
                                     <td>{{ $details->year }}</td>
                                 </tr>
                             @endif
                             @if ($details->fuel)
                                 <tr>
-                                    <td>Fuel Type:</td>
+                                    <td> {{ __('site.fuel') }}:</td>
                                     <td>{{ $details->fuel }}</td>
                                 </tr>
                             @endif
                             @if ($details->engine_size)
                                 <tr>
-                                    <td>Engine Size:</td>
+                                    <td> {{ __('site.engine_size') }}:</td>
                                     <td>{{ $details->engine_size }}</td>
                                 </tr>
                             @endif
                             @if ($details->doors)
                                 <tr>
-                                    <td>Doors:</td>
+                                    <td> {{ __('site.doors') }}:</td>
                                     <td>{{ $details->doors }}</td>
                                 </tr>
                             @endif
                             @if ($details->cylinders)
                                 <tr>
-                                    <td>Cylinders:</td>
+                                    <td> {{ __('site.cylinders') }}:</td>
                                     <td>{{ $details->cylinders }}</td>
                                 </tr>
                             @endif
                             @if ($details->vin)
                                 <tr>
-                                    <td>VIN:</td>
+                                    <td> {{ __('site.vin') }}:</td>
                                     <td>{{ $details->vin }}</td>
                                 </tr>
                             @endif
@@ -437,12 +437,12 @@
                         <a href="tel:+31649810044" class="call"><i class="fas fa-phone-alt"></i> +31 6 498 100 44</a>
 
                         <a href="https://api.whatsapp.com/send?phone=31649810044&text=Hallo%20Billionaire%20cars%2C"
-                            class="whatsapp"><i class="fab fa-whatsapp"></i> Chat Via Whatsapp</a>
-                        <a href="#send_message" class="message">Send Message</a>
+                            class="whatsapp"><i class="fab fa-whatsapp"></i>  {{ __('site.chat_whatsapp') }}</a>
+                        <a href="#send_message" class="message"> {{ __('site.send_message') }}</a>
                     </div>
 
                     <div class="mt-5">
-                        <h4>Gallery</h4>
+                        <h4>{{ __('site.Gallery') }}</h4>
                         <div class="row">
                             @foreach ($gallerys as $item)
                                 <div class="col-4 col-sm-3 my-2">
@@ -462,7 +462,7 @@
 
     <section class="contact__form mt-5" id="send_message">
         <div class="container-lg">
-            <h4 class="mb-4">Send Message</h4>
+            <h4 class="mb-4"> {{ __('site.send_message') }}</h4>
             <div class="row">
                 <div class="col-md-6">
                     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -476,19 +476,19 @@
                     <form id="contactForm">
                         <div class="row">
                             <div class="col-md-4 my-2">
-                                <input type="text" class="form-control shadow-sm" placeholder="Name" name="name">
+                                <input type="text" class="form-control shadow-sm" placeholder=" {{ __('site.name') }}" name="name">
                             </div>
                             <div class="col-md-4 my-2">
-                                <input type="text" class="form-control shadow-sm" placeholder="Email" name="email">
+                                <input type="text" class="form-control shadow-sm" placeholder=" {{ __('site.email') }}" name="email">
                             </div>
                             <div class="col-md-4 my-2">
-                                <input type="text" class="form-control shadow-sm" placeholder="Phone" name="phone">
+                                <input type="text" class="form-control shadow-sm" placeholder=" {{ __('site.phone') }}" name="phone">
                             </div>
                             <div class="col-12 my-2">
-                                <textarea name="message" class="form-control shadow-sm" placeholder="Message" rows="10"></textarea>
+                                <textarea name="message" class="form-control shadow-sm" placeholder=" {{ __('site.message') }}" rows="10"></textarea>
                             </div>
                         </div>
-                        <button type="submit" id="submitButton" class="send_message_btn">Send</button>
+                        <button type="submit" id="submitButton" class="send_message_btn"> {{ __('site.send') }}</button>
                     </form>
                 </div>
 
@@ -512,7 +512,7 @@
     @if (count($related_vehicles) > 0)
         <section class="mt-5">
             <div class="container-lg">
-                <h4 class="mb-4">Related Vehicles</h4>
+                <h4 class="mb-4"> {{ __('site.related_vehicles') }}</h4>
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         @foreach ($related_vehicles as $key => $item)

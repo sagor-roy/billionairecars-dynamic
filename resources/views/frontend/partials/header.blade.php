@@ -10,7 +10,7 @@
                     class="fas fa-bars"></i></span>
             </button>
             <div class="collapse navbar-collapse ms-md-5" id="navbar">
-                <ul class="navbar-nav ms-auto nav_list">
+                <ul class="navbar-nav ms-auto nav_list align-items-center">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}">{{ __('site.home') }}</a>
                     </li>
@@ -31,18 +31,22 @@
                         <a class="nav-link" href="{{ route('contact') }}">{{ __('site.contact') }}</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="dropdown-toggle"
+                            style="background-color: #e4cd66;color: #fff;padding: 5px 13px;border-radius: 15px;"
+                            href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             @if (\Session::has('lang'))
-                                {{ session('lang') == 'eng' ? 'English' : 'Dutch' }}
+                                {{ session('lang') == 'en' ? 'English' : 'Spanish' }}
                             @else
                                 English
                             @endif
                         </a>
 
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="{{ route('setlocale', 'eng') }}">English</a></li>
-                            <li><a class="dropdown-item" href="{{ route('setlocale', 'nl') }}">Dutch</a></li>
+                        <ul class="dropdown-menu p-0 mt-2" style="min-width: 7em" aria-labelledby="dropdownMenuLink">
+                            <li class="m-0"><a class="dropdown-item text-dark"
+                                    href="{{ route('setlocale', 'en') }}">English</a></li>
+                            <li class="m-0"><a class="dropdown-item text-dark"
+                                    href="{{ route('setlocale', 'nl') }}">Spanish</a></li>
                         </ul>
                     </li>
                 </ul>

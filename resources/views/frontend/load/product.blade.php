@@ -6,11 +6,11 @@
             <a href="#"><i class="fas fa-th"></i></a>
         </li> --}}
         <li>
-            <span class="d-none d-md-block">Sort by:</span>
+            <span class="d-none d-md-block">{{ __('site.sort_by') }}:</span>
             <select id="sortBy" class="form-control">
-                <option selected disabled>Date Listed: Newest</option>
-                <option value="price_low">Price: Low to High</option>
-                <option value="price_high">Price: High to Low</option>
+                <option selected disabled>{{ __('site.date_listed') }}</option>
+                <option value="price_low">{{ __('site.low_price') }}</option>
+                <option value="price_high">{{ __('site.high_price') }}</option>
             </select>
         </li>
     </ul>

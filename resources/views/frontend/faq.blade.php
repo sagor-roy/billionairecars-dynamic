@@ -6,7 +6,7 @@
 @section('content')
     <section class="blog_cover">
         <div class="text-center">
-            <h1>Frequently Asked <span>Questions</span> </h1>
+            <h1>{{ __('site.faq_2') }} </h1>
         </div>
     </section>
 
@@ -14,8 +14,8 @@
         <div class="container-lg">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="#">FAQ</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('site.home') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="#">{{ __('site.faq') }}</a></li>
                 </ol>
             </nav>
         </div>
@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="head_title mb-4" data-wow-duration="1s">
-                        <h1>Frequently Asked Questions
+                        <h1>{{ __('site.faq_2') }}
                         </h1>
                     </div>
                     <div class="accordion accordion-flush" id="faqlist">

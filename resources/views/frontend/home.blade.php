@@ -19,7 +19,7 @@
                                             <div class="col-md-4 px-md-1 mt-2 mt-md-0 position-relative">
                                                 <select name="brand" required
                                                     class="form-control position-relative select2">
-                                                    <option selected disabled>All Brand</option>
+                                                    <option selected disabled>{{ __('site.brand') }}</option>
                                                     @foreach ($brands as $item)
                                                         <option value="{{ $item->id }}">{{ $item->brand_name }}</option>
                                                     @endforeach
@@ -28,12 +28,12 @@
                                             <div class="col-md-4 px-md-1 mt-2 mt-md-0 position-relative">
                                                 <select name="model" disabled
                                                     class="form-control position-relative select2">
-                                                    <option selected disabled>All Model</option>
+                                                    <option selected disabled>{{ __('site.model') }}</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-4 ps-md-1 mt-2 mt-md-0 position-relative">
                                                 <select name="price" class="form-control select2 position-relative">
-                                                    <option selected disabled>Max Price</option>
+                                                    <option selected disabled>{{ __('site.price') }}</option>
                                                     <option value="30000">$30,000</option>
                                                     <option value="50000">$50,000</option>
                                                     <option value="75000">$75,000</option>
@@ -91,8 +91,8 @@
     <section class="mt-5">
         <div class="container-lg">
             <div class="head_title wow animate__slideInLeft" data-wow-duration="1s">
-                <h4 class="mb-2 d-inline-block">Handy picked</h4>
-                <h1>Premium</h1>
+                <h4 class="mb-2 d-inline-block">{{ __('site.title_1') }}</h4>
+                <h1>{{ __('site.title_2') }}</h1>
             </div>
 
             <div class="mt-5">
@@ -178,7 +178,7 @@
                             <div class="col-lg-6 mt-4 social_media_with_btn  wow animate__slideInRight"
                             data-wow-duration="1s">
                                 <a href="{{ route('vehicles_filter') }}?type=premium"
-                                    class="add_list_button d-md-none text-center w-100"> View All</a>
+                                    class="add_list_button d-md-none text-center w-100"> {{ __('site.view_all') }}</a>
                             </div>
                         </div>
                     </div>`
@@ -189,10 +189,10 @@
 
     <section class="mt-5 mt-md-0">
         <div class="container-lg">
-            <p class="d-md-none d-block text-center pb-3 w-100 wow animate__slideInLeft" data-wow-duration="1s">Follow Us</p>
+            <p class="d-md-none d-block text-center pb-3 w-100 wow animate__slideInLeft" data-wow-duration="1s">{{ __('site.follow_us') }}</p>
             <div class="social_media_with_btn">
                 <ul class="wow animate__slideInLeft" data-wow-duration="1s">
-                    <li class="d-none d-md-block">Follow Us</li>
+                    <li class="d-none d-md-block">{{ __('site.follow_us') }}</li>
                     <li>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                     </li>
@@ -203,7 +203,7 @@
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                     </li>
                 </ul>
-                <a href="{{ route('vehicles_filter') }}?type=premium" class="add_list_button d-none d-md-block wow animate__slideInRight" data-wow-duration="1s"> View All</a>
+                <a href="{{ route('vehicles_filter') }}?type=premium" class="add_list_button d-none d-md-block wow animate__slideInRight" data-wow-duration="1s"> {{ __('site.view_all') }}</a>
             </div>
         </div>
     </section>
@@ -211,7 +211,7 @@
     <section class="mt-5 popular_makes">
         <div class="container-lg">
             <div class="head_title wow animate__slideInLeft" data-wow-duration="1s">
-                <h1>Commercial Vehicles</h1>
+                <h1>{{ __('site.commercial_vehicles') }}</h1>
             </div>
 
             <div class="mt-5">
@@ -250,7 +250,7 @@
                         </div>
                         <div class="social_media_with_btn wow animate__slideInRight" data-wow-duration="1s">
                             <a href="{{ route('vehicles_filter') }}?type=commercial"
-                                class="add_list_button d-none d-md-block"> View All</a>
+                                class="add_list_button d-none d-md-block"> {{ __('site.view_all') }}</a>
                         </div>
                     </div>
                 </div>
@@ -263,7 +263,7 @@
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     <div class="head_title mb-4 wow animate__slideInLeft" data-wow-duration="1s">
-                        <h1>Frequently Asked Questions
+                        <h1>{{ __('site.faq_2') }}
                         </h1>
                     </div>
                     <div class="accordion accordion-flush" id="faqlist">
