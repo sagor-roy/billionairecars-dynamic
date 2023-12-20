@@ -13,15 +13,15 @@ use function PHPUnit\Framework\returnValue;
 
 class HomeController extends Controller
 {
-    public function __construct()
-    {
-        // if (Session::get('lang') == '')
-        //     Session::put('lang', 'en');
-    }
+    // public function __construct()
+    // {
+    //     // if (Session::get('lang') == '')
+    //     //     Session::put('lang', 'en');
+    // }
     public function index()
     {
         $lang = Session::get('lang');
-        //return Cache::remember("home_" . $lang, env('CACHE_TIME'), function () use ($lang) {
+        return Cache::remember("home_" . $lang, env('CACHE_TIME'), function () use ($lang) {
             $select = ['slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions'];
             if ($lang !== "nl") {
                 array_push($select, "title");
@@ -46,7 +46,7 @@ class HomeController extends Controller
             $brands = Brand::all();
 
             return view("frontend.home", compact("premium_products", "commercial_products", "faqs", "brands", "home_slider"))->render();
-        //});
+        });
     }
 
 
