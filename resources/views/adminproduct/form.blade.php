@@ -41,6 +41,16 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group row  " >
+										<label for="Title (Spanish)" class=" control-label col-md-4 text-left"> Title (Spanish) </label>
+										<div class="col-md-6">
+										  <input  type='text' name='title_nl' id='title_nl' value='{{ $row['title_nl'] }}' 
+						     class='form-control form-control-sm ' /> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
 										<label for="Slug" class=" control-label col-md-4 text-left"> Slug </label>
 										<div class="col-md-6">
 										  <input  type='text' name='slug' id='slug' value='{{ $row['slug'] }}' 
@@ -224,6 +234,16 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group row  " >
+										<label for="Short Description (Spanish)" class=" control-label col-md-4 text-left"> Short Description (Spanish) </label>
+										<div class="col-md-6">
+										  <textarea name='short_description_nl' rows='5' id='short_description_nl' class='form-control form-control-sm '  
+				           >{{ $row['short_description_nl'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
 										<label for="Thumbnail" class=" control-label col-md-4 text-left"> Thumbnail </label>
 										<div class="col-md-6">
 										  
@@ -289,10 +309,30 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group row  " >
+										<label for="Accessories (Spanish)" class=" control-label col-md-4 text-left"> Accessories (Spanish) </label>
+										<div class="col-md-6">
+										  <textarea name='accessories_nl' rows='5' id='editor' class='form-control form-control-sm editor '  
+						 >{{ $row['accessories_nl'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
 										<label for="License Plate Details" class=" control-label col-md-4 text-left"> License Plate Details </label>
 										<div class="col-md-6">
 										  <textarea name='license_plate_details' rows='5' id='editor' class='form-control form-control-sm editor '  
 						 >{{ $row['license_plate_details'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
+										<label for="License Plate Details (Spanish)" class=" control-label col-md-4 text-left"> License Plate Details (Spanish) </label>
+										<div class="col-md-6">
+										  <textarea name='license_plate_details_nl' rows='5' id='editor' class='form-control form-control-sm editor '  
+						 >{{ $row['license_plate_details_nl'] }}</textarea> 
 										 </div> 
 										 <div class="col-md-2">
 										 	
@@ -309,10 +349,30 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group row  " >
+										<label for="Financial Details (Spanish)" class=" control-label col-md-4 text-left"> Financial Details (Spanish) </label>
+										<div class="col-md-6">
+										  <textarea name='financial_details_nl' rows='5' id='editor' class='form-control form-control-sm editor '  
+						 >{{ $row['financial_details_nl'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
 										<label for="Technical Data" class=" control-label col-md-4 text-left"> Technical Data </label>
 										<div class="col-md-6">
 										  <textarea name='technical_data' rows='5' id='editor' class='form-control form-control-sm editor '  
 						 >{{ $row['technical_data'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
+										<label for="Technical Data (Spanish)" class=" control-label col-md-4 text-left"> Technical Data (Spanish) </label>
+										<div class="col-md-6">
+										  <textarea name='technical_data_nl' rows='5' id='editor' class='form-control form-control-sm editor '  
+						 >{{ $row['technical_data_nl'] }}</textarea> 
 										 </div> 
 										 <div class="col-md-2">
 										 	
@@ -329,10 +389,30 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group row  " >
+										<label for="Vehicle Data Specific (Spanish)" class=" control-label col-md-4 text-left"> Vehicle Data Specific (Spanish) </label>
+										<div class="col-md-6">
+										  <textarea name='vehicle_data_specific_nl' rows='5' id='editor' class='form-control form-control-sm editor '  
+						 >{{ $row['vehicle_data_specific_nl'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
 										<label for="Environmental Data" class=" control-label col-md-4 text-left"> Environmental Data </label>
 										<div class="col-md-6">
 										  <textarea name='environmental_data' rows='5' id='editor' class='form-control form-control-sm editor '  
 						 >{{ $row['environmental_data'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
+										<label for="Environmental Data (Spanish)" class=" control-label col-md-4 text-left"> Environmental Data (Spanish) </label>
+										<div class="col-md-6">
+										  <textarea name='environmental_data_nl' rows='5' id='editor' class='form-control form-control-sm editor '  
+						 >{{ $row['environmental_data_nl'] }}</textarea> 
 										 </div> 
 										 <div class="col-md-2">
 										 	
@@ -349,6 +429,16 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group row  " >
+										<label for="Comments (Spanish)" class=" control-label col-md-4 text-left"> Comments (Spanish) </label>
+										<div class="col-md-6">
+										  <textarea name='comments_nl' rows='5' id='editor' class='form-control form-control-sm editor '  
+						 >{{ $row['comments_nl'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
 										<label for="Options" class=" control-label col-md-4 text-left"> Options </label>
 										<div class="col-md-6">
 										  <textarea name='options' rows='5' id='editor' class='form-control form-control-sm editor '  
@@ -359,10 +449,30 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group row  " >
+										<label for="Options (Spanish)" class=" control-label col-md-4 text-left"> Options (Spanish) </label>
+										<div class="col-md-6">
+										  <textarea name='options_nl' rows='5' id='editor' class='form-control form-control-sm editor '  
+						 >{{ $row['options_nl'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
 										<label for="Other Information" class=" control-label col-md-4 text-left"> Other Information </label>
 										<div class="col-md-6">
 										  <textarea name='other_information' rows='5' id='editor' class='form-control form-control-sm editor '  
 						 >{{ $row['other_information'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
+										<label for="Other Information (Spanish)" class=" control-label col-md-4 text-left"> Other Information (Spanish) </label>
+										<div class="col-md-6">
+										  <textarea name='other_information_nl' rows='5' id='editor' class='form-control form-control-sm editor '  
+						 >{{ $row['other_information_nl'] }}</textarea> 
 										 </div> 
 										 <div class="col-md-2">
 										 	
