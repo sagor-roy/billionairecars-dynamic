@@ -36,8 +36,8 @@
         <div class="container-lg">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">{{ __('site.home') }}</a></li>
-                    <li class="breadcrumb-item"><a href="#">{{ __('site.vehicles_details') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('site.home') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ request()->fullUrl() }}">{{ __('site.vehicles_details') }}</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ $details->title }}</li>
                 </ol>
             </nav>

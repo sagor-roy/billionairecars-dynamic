@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -44,19 +45,47 @@ class HomeController extends Controller
 
     public function details($slug)
     {
-        return Cache::remember("details_$slug", env('CACHE_TIME'), function () use ($slug) {
-            $details = Product::with('brands')->where(['status' => 1, 'slug' => $slug])->firstOrFail();
+        $lang = Session::get('lang');
+        $cacheKey = $lang . "_details_$slug";
+        return Cache::remember($cacheKey, env('CACHE_TIME'), function () use ($slug, $lang) {
+            $select = [
+                "id", "slug", "price", "thumbnail", "gallery", "created_at", "brand", "body", "transmission", "fuel", "type", "video_url", "map_location", "color", "drive_type", "conditions", "year", "engine_size", "doors", "cylinders", "vin", "model", "status"
+            ];
 
-            $related_vehicles = Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')
+            $localizedFields = [
+                "title", "short_description", "accessories", "license_plate_details", "financial_details", "technical_data", "vehicle_data_specific", "environmental_data", "comments", "options", "other_information"
+            ];
+
+            if ($lang == 'nl') {
+                $localizedFields = array_map(function ($field) {
+                    return "{$field}_nl as $field";
+                }, $localizedFields);
+            }
+
+            $select = array_merge($select, $localizedFields);
+
+            $details = Product::select($select)->with('brands')->where(['status' => 1, 'slug' => $slug])->firstOrFail();
+
+            $select = ['slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions'];
+            if ($lang !== "nl") {
+                array_push($select, "title");
+            } else {
+                array_push($select, "title_nl as title");
+            }
+
+            $related_vehicles = Product::select($select)
                 ->with('brands')
+                ->where('id', '!=', $details->id)
                 ->where(['brand' => $details->brand, 'status' => 1])
                 ->limit(10)
-                ->orderBy('id', 'desc')
+                ->orderByDesc('id')
                 ->get();
 
             return view('frontend.details', compact('details', 'related_vehicles'))->render();
         });
     }
+
+
 
     public function contact_message(Request $request)
     {
@@ -77,7 +106,14 @@ class HomeController extends Controller
 
     public function filter(Request $request)
     {
-        $products = Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')
+        $lang = Session::get('lang');
+        $select = ['slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions'];
+        if ($lang !== "nl") {
+            array_push($select, "title");
+        } else {
+            array_push($select, "title_nl as title");
+        }
+        $products = Product::select($select)
             ->with('brands')
             ->where(['status' => 1,])
             ->orderBy('id', 'desc')
