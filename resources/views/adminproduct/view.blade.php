@@ -69,6 +69,12 @@
 					</tr>
 				
 					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Title (Spanish)', (isset($fields['title_nl']['language'])? $fields['title_nl']['language'] : array())) }}</td>
+						<td>{{ $row->title_nl}} </td>
+						
+					</tr>
+				
+					<tr>
 						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Slug', (isset($fields['slug']['language'])? $fields['slug']['language'] : array())) }}</td>
 						<td>{{ $row->slug}} </td>
 						
@@ -165,6 +171,12 @@
 					</tr>
 				
 					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Drive Type', (isset($fields['drive_type']['language'])? $fields['drive_type']['language'] : array())) }}</td>
+						<td>{{ $row->drive_type}} </td>
+						
+					</tr>
+				
+					<tr>
 						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Other Information', (isset($fields['other_information']['language'])? $fields['other_information']['language'] : array())) }}</td>
 						<td>{{ $row->other_information}} </td>
 						
@@ -185,12 +197,6 @@
 					<tr>
 						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Color', (isset($fields['color']['language'])? $fields['color']['language'] : array())) }}</td>
 						<td>{{ $row->color}} </td>
-						
-					</tr>
-				
-					<tr>
-						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Drive Type', (isset($fields['drive_type']['language'])? $fields['drive_type']['language'] : array())) }}</td>
-						<td>{{ $row->drive_type}} </td>
 						
 					</tr>
 				
@@ -233,6 +239,66 @@
 					<tr>
 						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Status', (isset($fields['status']['language'])? $fields['status']['language'] : array())) }}</td>
 						<td>{{ $row->status}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Short Description Nl', (isset($fields['short_description_nl']['language'])? $fields['short_description_nl']['language'] : array())) }}</td>
+						<td>{{ $row->short_description_nl}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Accessories Nl', (isset($fields['accessories_nl']['language'])? $fields['accessories_nl']['language'] : array())) }}</td>
+						<td>{{ $row->accessories_nl}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('License Plate Details Nl', (isset($fields['license_plate_details_nl']['language'])? $fields['license_plate_details_nl']['language'] : array())) }}</td>
+						<td>{{ $row->license_plate_details_nl}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Financial Details Nl', (isset($fields['financial_details_nl']['language'])? $fields['financial_details_nl']['language'] : array())) }}</td>
+						<td>{{ $row->financial_details_nl}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Technical Data Nl', (isset($fields['technical_data_nl']['language'])? $fields['technical_data_nl']['language'] : array())) }}</td>
+						<td>{{ $row->technical_data_nl}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Vehicle Data Specific Nl', (isset($fields['vehicle_data_specific_nl']['language'])? $fields['vehicle_data_specific_nl']['language'] : array())) }}</td>
+						<td>{{ $row->vehicle_data_specific_nl}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Environmental Data Nl', (isset($fields['environmental_data_nl']['language'])? $fields['environmental_data_nl']['language'] : array())) }}</td>
+						<td>{{ $row->environmental_data_nl}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Comments Nl', (isset($fields['comments_nl']['language'])? $fields['comments_nl']['language'] : array())) }}</td>
+						<td>{{ $row->comments_nl}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Options Nl', (isset($fields['options_nl']['language'])? $fields['options_nl']['language'] : array())) }}</td>
+						<td>{{ $row->options_nl}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Other Information Nl', (isset($fields['other_information_nl']['language'])? $fields['other_information_nl']['language'] : array())) }}</td>
+						<td>{{ $row->other_information_nl}} </td>
 						
 					</tr>
 				

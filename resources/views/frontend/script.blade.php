@@ -82,13 +82,13 @@
                     // Iterate through unique models to build options
                     for (let i = 0; i < response.model.length; i++) {
                         modelOptions +=
-                            `<option ${query_model == response.model[i] ? 'selected':''} value="${response.model[i]}">${response.model[i]}</option>`;
+                            `<option ${query_model == response.model[i] ? 'selected':''} value="${response.model[i]}">&#8364;{response.model[i]}</option>`;
                     }
 
                     // Iterate through unique colors to build options
                     for (let i = 0; i < response.color.length; i++) {
                         colorOptions +=
-                            `<option value="${response.color[i]}">${response.color[i]}</option>`;
+                            `<option value="${response.color[i]}">&#8364;{response.color[i]}</option>`;
                     }
 
                     // Update dropdowns

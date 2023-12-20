@@ -39,7 +39,7 @@
                                         <li>{{ $item?->brands->brand }}</li>
                                         <li>{{ $item?->color }}</li>
                                     </ul>
-                                    <h6 class="text-dark">${{ $item?->price }}</h6>
+                                    <h6 class="text-dark">&#8364;{{ $item?->price }}</h6>
                                 </div>
                             </div>
                         </div>

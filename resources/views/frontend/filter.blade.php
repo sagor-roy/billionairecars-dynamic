@@ -76,11 +76,11 @@
                     <div class="col-md-3 my-2">
                         <select name="price" class="form-control select2">
                             <option selected disabled>{{ __('site.price') }}</option>
-                            <option {{ request('price') == '30000' ? 'selected' : '' }} value="30000">$30,000</option>
-                            <option {{ request('price') == '50000' ? 'selected' : '' }} value="50000">$50,000</option>
-                            <option {{ request('price') == '75000' ? 'selected' : '' }} value="75000">$75,000</option>
-                            <option {{ request('price') == '100000' ? 'selected' : '' }} value="100000">$1,000,00</option>
-                            <option {{ request('price') == '1500000' ? 'selected' : '' }} value="1500000">$1,50,0000</option>
+                            <option {{ request('price') == '30000' ? 'selected' : '' }} value="30000">&#8364;30,000</option>
+                            <option {{ request('price') == '50000' ? 'selected' : '' }} value="50000">&#8364;50,000</option>
+                            <option {{ request('price') == '75000' ? 'selected' : '' }} value="75000">&#8364;75,000</option>
+                            <option {{ request('price') == '100000' ? 'selected' : '' }} value="100000">&#8364;1,000,00</option>
+                            <option {{ request('price') == '1500000' ? 'selected' : '' }} value="1500000">&#8364;1,50,0000</option>
                         </select>
                     </div>
                 </div>

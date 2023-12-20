@@ -899,7 +899,7 @@ class ModuleController extends Controller {
     public function postSavetable( Request $request)
     {
         //$this->beforeFilter('csrf', array('on'=>'post'));
-        
+        //dd('Debugging: Inside postSavetable method');
         $id = $request->input('module_id');
         $row = \DB::table('tb_module')->where('module_id', $id)
                                 ->get();
