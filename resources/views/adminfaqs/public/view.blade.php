@@ -34,6 +34,18 @@
 						<td>{{ $row->status}} </td>
 						
 					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Title Nl', (isset($fields['title_nl']['language'])? $fields['title_nl']['language'] : array())) }}</td>
+						<td>{{ $row->title_nl}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Description Nl', (isset($fields['description_nl']['language'])? $fields['description_nl']['language'] : array())) }}</td>
+						<td>{{ $row->description_nl}} </td>
+						
+					</tr>
 						
 					<tr>
 						<td width='30%' class='label-view text-right'></td>

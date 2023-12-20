@@ -16,32 +16,34 @@ class HomeController extends Controller
     {
         $lang = Session::get('lang');
         return Cache::remember("home_" . $lang, env('CACHE_TIME'), function () use ($lang) {
-            $select = ['slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions'];
-            if ($lang !== "nl") {
-                array_push($select, "title");
-            } else {
-                array_push($select, "title_nl as title");
-            }
-            $premium_products = Product::select($select)
+            $selectProduct = ['slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions'];
+            $selectTitle = ($lang !== "nl") ? ['title'] : ['title_nl as title'];
+
+            $premium_products = Product::select(array_merge($selectProduct, $selectTitle))
                 ->with('brands')
                 ->where(['status' => 1, 'type' => 'Premium'])
-                ->orderBy('id', 'desc')
+                ->orderByDesc('id')
                 ->limit(5)
                 ->get();
-            $commercial_products = Product::select($select)
+
+            $commercial_products = Product::select(array_merge($selectProduct, $selectTitle))
                 ->with('brands')
                 ->where(['status' => 1, 'type' => 'Commercial'])
+                ->orderByDesc('id')
                 ->limit(10)
-                ->orderBy('id', 'desc')
                 ->get();
 
-            $faqs = DB::table('faq')->where(['status' => 1])->get();
+            $selectFaq = ['id', 'status'];
+            $selectFaq = array_merge($selectFaq, ($lang !== "nl") ? ['title', 'description'] : ['title_nl as title', 'description_nl as description']);
+            $faqs = DB::table('faq')->select($selectFaq)->where(['status' => 1])->get();
+
             $home_slider = DB::table('home_slider')->first();
             $brands = Brand::all();
 
             return view("frontend.home", compact("premium_products", "commercial_products", "faqs", "brands", "home_slider"))->render();
         });
     }
+
 
     public function details($slug)
     {

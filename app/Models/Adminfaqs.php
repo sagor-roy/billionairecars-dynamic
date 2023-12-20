@@ -15,12 +15,12 @@ class adminfaqs extends Sximo  {
 
 	public static function querySelect(  ){
 		
-		return "  SELECT faq.* FROM faq  ";
+		return " SELECT faq.* FROM faq ";
 	}	
 
 	public static function queryWhere(  ){
 		
-		return "  WHERE faq.id IS NOT NULL ";
+		return " WHERE faq.id IS NOT NULL ";
 	}
 	
 	public static function queryGroup(){

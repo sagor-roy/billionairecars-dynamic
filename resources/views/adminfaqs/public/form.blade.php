@@ -28,10 +28,30 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group row  " >
+										<label for="Title (Sapnish)" class=" control-label col-md-4 text-left"> Title (Sapnish) </label>
+										<div class="col-md-6">
+										  <input  type='text' name='title_nl' id='title_nl' value='{{ $row['title_nl'] }}' 
+						     class='form-control form-control-sm ' /> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
 										<label for="Description" class=" control-label col-md-4 text-left"> Description </label>
 										<div class="col-md-6">
 										  <textarea name='description' rows='5' id='description' class='form-control form-control-sm '  
 				           >{{ $row['description'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
+										<label for="Description (Sapnish)" class=" control-label col-md-4 text-left"> Description (Sapnish) </label>
+										<div class="col-md-6">
+										  <textarea name='description_nl' rows='5' id='description_nl' class='form-control form-control-sm '  
+				           >{{ $row['description_nl'] }}</textarea> 
 										 </div> 
 										 <div class="col-md-2">
 										 	
