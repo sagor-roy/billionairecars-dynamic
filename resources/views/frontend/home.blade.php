@@ -34,11 +34,11 @@
                                             <div class="col-md-4 ps-md-1 mt-2 mt-md-0 position-relative">
                                                 <select name="price" class="form-control select2 position-relative">
                                                     <option selected disabled>{{ __('site.price') }}</option>
-                                                    <option value="30000">$30,000</option>
-                                                    <option value="50000">$50,000</option>
-                                                    <option value="75000">$75,000</option>
-                                                    <option value="100000">$1,000,00</option>
-                                                    <option value="1500000">$1,50,0000</option>
+                                                    <option value="30000">&#8364;30,000</option>
+                                                    <option value="50000">&#8364;50,000</option>
+                                                    <option value="75000">&#8364;75,000</option>
+                                                    <option value="100000">&#8364;1,000,00</option>
+                                                    <option value="1500000">&#8364;1,50,0000</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -115,7 +115,7 @@
                                             <li>{{ $premium_products?->first()?->fuel }}</li>
                                             <li>{{ $premium_products?->first()?->conditions }}</li>
                                         </ul>
-                                        <h4>${{ $premium_products?->first()?->price }}</h4>
+                                        <h4>&#8364;{{ $premium_products?->first()?->price }}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -141,7 +141,7 @@
                                                     <li>{{ $premium_products?->first()?->brands->brand }}</li>
                                                     <li>{{ $premium_products?->first()?->color }}</li>
                                                 </ul>
-                                                <h6>${{ $premium_products?->first()?->price }}</h6>
+                                                <h6>&#8364;{{ $premium_products?->first()?->price }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +167,7 @@
                                                             <li>{{ $item?->brands->brand }}</li>
                                                             <li>{{ $item?->color }}</li>
                                                         </ul>
-                                                        <h6>${{ $item?->price }}</h6>
+                                                        <h6>&#8364;{{ $item?->price }}</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -235,7 +235,7 @@
                                                     <li>{{ $item?->brands->brand }}</li>
                                                     <li>{{ $item?->color }}</li>
                                                 </ul>
-                                                <h6>${{ $item?->price }}</h6>
+                                                <h6>&#8364;{{ $item?->price }}</h6>
                                             </div>
                                         </div>
                                     </div>

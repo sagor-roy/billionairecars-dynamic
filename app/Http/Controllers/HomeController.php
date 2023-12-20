@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
-    // public function __construct()
-    // {
-    //     if (Session::get('lang') == '')
-    //         Session::put('lang', 'en');
-    // }
     public function index()
     {
         $lang = Session::get('lang');
@@ -32,7 +27,7 @@ class HomeController extends Controller
                 ->orderBy('id', 'desc')
                 ->limit(5)
                 ->get();
-            $commercial_products = Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')
+            $commercial_products = Product::select($select)
                 ->with('brands')
                 ->where(['status' => 1, 'type' => 'Commercial'])
                 ->limit(10)
@@ -46,7 +41,6 @@ class HomeController extends Controller
             return view("frontend.home", compact("premium_products", "commercial_products", "faqs", "brands", "home_slider"))->render();
         });
     }
-
 
     public function details($slug)
     {

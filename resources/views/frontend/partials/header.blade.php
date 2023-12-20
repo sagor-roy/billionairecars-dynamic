@@ -11,9 +11,9 @@
             </button>
             <div class="collapse navbar-collapse ms-md-5" id="navbar">
                 <ul class="navbar-nav ms-auto nav_list align-items-center">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}">{{ __('site.home') }}</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('vehicles_filter') }}">{{ __('site.all_vehicles') }}</a>
                     </li>

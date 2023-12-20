@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,9 +31,14 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         
-        if(env('REDIRECT_HTTPS'))
-        {
-            $url->forceScheme('https');
-        }
+        
+        // if(env('REDIRECT_HTTPS'))
+        // {
+        //     $url->forceScheme('https');
+        // }
+        //if (!Session::has('lang')) {
+            //App::setLocale('nl');
+            //dd(App::getLocale());
+        //}
     }
 }

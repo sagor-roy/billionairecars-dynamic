@@ -91,80 +91,80 @@
                     </div>
 
                     <div class="title_price d-md-none">
-                        <h2 class="mt-3">${{ $details->price }}</h2>
+                        <h2 class="mt-3">&#8364;{{ $details->price }}</h2>
                     </div>
 
                     <div class="short_description mt-5 d-md-none shadow-sm">
                         <table class="table">
                             @if ($details->brands->brand)
                                 <tr>
-                                    <td>Make:</td>
+                                    <td> {{ __('site.make') }}:</td>
                                     <td>{{ $details->brands->brand }}</td>
                                 </tr>
                             @endif
                             @if ($details->model)
                                 <tr>
-                                    <td>Model:</td>
+                                    <td> {{ __('site.model_1') }}:</td>
                                     <td>{{ $details->model }}</td>
                                 </tr>
                             @endif
                             @if ($details->color)
                                 <tr>
-                                    <td>Color:</td>
+                                    <td> {{ __('site.color') }}:</td>
                                     <td>{{ $details->color }}</td>
                                 </tr>
                             @endif
                             @if ($details->drive_type)
                                 <tr>
-                                    <td>Drive Type:</td>
+                                    <td> {{ __('site.drive_type') }}:</td>
                                     <td>{{ $details->drive_type }}</td>
                                 </tr>
                             @endif
                             @if ($details->transmission)
                                 <tr>
-                                    <td>Transmission:</td>
+                                    <td> {{ __('site.transmission') }}:</td>
                                     <td>{{ $details->transmission }}</td>
                                 </tr>
                             @endif
                             @if ($details->conditions)
                                 <tr>
-                                    <td>Condition:</td>
+                                    <td> {{ __('site.condition') }}:</td>
                                     <td>{{ $details->conditions }}</td>
                                 </tr>
                             @endif
                             @if ($details->year)
                                 <tr>
-                                    <td>Year:</td>
+                                    <td> {{ __('site.year') }}:</td>
                                     <td>{{ $details->year }}</td>
                                 </tr>
                             @endif
                             @if ($details->fuel)
                                 <tr>
-                                    <td>Fuel Type:</td>
+                                    <td> {{ __('site.fuel') }}:</td>
                                     <td>{{ $details->fuel }}</td>
                                 </tr>
                             @endif
                             @if ($details->engine_size)
                                 <tr>
-                                    <td>Engine Size:</td>
+                                    <td> {{ __('site.engine_size') }}:</td>
                                     <td>{{ $details->engine_size }}</td>
                                 </tr>
                             @endif
                             @if ($details->doors)
                                 <tr>
-                                    <td>Doors:</td>
+                                    <td> {{ __('site.doors') }}:</td>
                                     <td>{{ $details->doors }}</td>
                                 </tr>
                             @endif
                             @if ($details->cylinders)
                                 <tr>
-                                    <td>Cylinders:</td>
+                                    <td> {{ __('site.cylinders') }}:</td>
                                     <td>{{ $details->cylinders }}</td>
                                 </tr>
                             @endif
                             @if ($details->vin)
                                 <tr>
-                                    <td>VIN:</td>
+                                    <td> {{ __('site.vin') }}:</td>
                                     <td>{{ $details->vin }}</td>
                                 </tr>
                             @endif
@@ -351,7 +351,7 @@
                             <li><i class="fas fa-circle"></i> {{ $details->fuel }}</li>
                         </ul>
                         <hr>
-                        <h2>${{ $details->price }}</h2>
+                        <h2>&#8364;{{ $details->price }}</h2>
                     </div>
 
                     <div class="short_description d-none d-md-block shadow-sm">
@@ -437,12 +437,12 @@
                         <a href="tel:+31649810044" class="call"><i class="fas fa-phone-alt"></i> +31 6 498 100 44</a>
 
                         <a href="https://api.whatsapp.com/send?phone=31649810044&text=Hallo%20Billionaire%20cars%2C"
-                            class="whatsapp"><i class="fab fa-whatsapp"></i>  {{ __('site.chat_whatsapp') }}</a>
+                            class="whatsapp"><i class="fab fa-whatsapp"></i> {{ __('site.chat_whatsapp') }}</a>
                         <a href="#send_message" class="message"> {{ __('site.send_message') }}</a>
                     </div>
 
                     <div class="mt-5">
-                        <h4>{{ __('site.Gallery') }}</h4>
+                        <h4>{{ __('site.gallery') }}</h4>
                         <div class="row">
                             @foreach ($gallerys as $item)
                                 <div class="col-4 col-sm-3 my-2">
@@ -476,19 +476,23 @@
                     <form id="contactForm">
                         <div class="row">
                             <div class="col-md-4 my-2">
-                                <input type="text" class="form-control shadow-sm" placeholder=" {{ __('site.name') }}" name="name">
+                                <input type="text" class="form-control shadow-sm"
+                                    placeholder=" {{ __('site.name') }}" name="name">
                             </div>
                             <div class="col-md-4 my-2">
-                                <input type="text" class="form-control shadow-sm" placeholder=" {{ __('site.email') }}" name="email">
+                                <input type="text" class="form-control shadow-sm"
+                                    placeholder=" {{ __('site.email') }}" name="email">
                             </div>
                             <div class="col-md-4 my-2">
-                                <input type="text" class="form-control shadow-sm" placeholder=" {{ __('site.phone') }}" name="phone">
+                                <input type="text" class="form-control shadow-sm"
+                                    placeholder=" {{ __('site.phone') }}" name="phone">
                             </div>
                             <div class="col-12 my-2">
                                 <textarea name="message" class="form-control shadow-sm" placeholder=" {{ __('site.message') }}" rows="10"></textarea>
                             </div>
                         </div>
-                        <button type="submit" id="submitButton" class="send_message_btn"> {{ __('site.send') }}</button>
+                        <button type="submit" id="submitButton" class="send_message_btn">
+                            {{ __('site.send') }}</button>
                     </form>
                 </div>
 
@@ -533,7 +537,7 @@
                                                     <li>{{ $item?->brands->brand }}</li>
                                                     <li>{{ $item?->color }}</li>
                                                 </ul>
-                                                <h6>${{ $item?->price }}</h6>
+                                                <h6>&#8364;{{ $item?->price }}</h6>
                                             </div>
                                         </div>
                                     </div>
