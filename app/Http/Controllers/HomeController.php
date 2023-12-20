@@ -7,21 +7,31 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
-
-use function PHPUnit\Framework\returnValue;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
+    // public function __construct()
+    // {
+    //     if (Session::get('lang') == '')
+    //         Session::put('lang', 'en');
+    // }
     public function index()
     {
-        return Cache::remember("home", env('CACHE_TIME'), function () {
-            $premium_products = Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')
+        $lang = Session::get('lang');
+        return Cache::remember("home_" . $lang, env('CACHE_TIME'), function () use ($lang) {
+            $select = ['slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions'];
+            if ($lang !== "nl") {
+                array_push($select, "title");
+            } else {
+                array_push($select, "title_nl as title");
+            }
+            $premium_products = Product::select($select)
                 ->with('brands')
                 ->where(['status' => 1, 'type' => 'Premium'])
                 ->orderBy('id', 'desc')
                 ->limit(5)
                 ->get();
-
             $commercial_products = Product::select('title', 'slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions')
                 ->with('brands')
                 ->where(['status' => 1, 'type' => 'Commercial'])
