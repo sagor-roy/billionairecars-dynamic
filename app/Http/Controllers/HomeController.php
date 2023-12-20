@@ -188,7 +188,7 @@ class HomeController extends Controller
             $selectFaq = ['id', 'status'];
             $selectFaq = array_merge($selectFaq, ($lang !== "nl") ? ['title', 'description'] : ['title_nl as title', 'description_nl as description']);
             $faqs = DB::table('faq')->select($selectFaq)->where(['status' => 1])->get();
-            return view('frontend.faq', compact('faqs'));
+            return view('frontend.faq', compact('faqs'))->render();
         });
     }
 
