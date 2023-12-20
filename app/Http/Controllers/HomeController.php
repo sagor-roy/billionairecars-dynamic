@@ -183,10 +183,13 @@ class HomeController extends Controller
 
     public function faq()
     {
-        $faqs = Cache::remember("faqs", env('CACHE_TIME'), function () {
-            return DB::table('faq')->where(['status' => 1])->get();
+        $lang = Session::get('lang');
+        return Cache::remember("faqs_$lang", env('CACHE_TIME'), function () use ($lang) {
+            $selectFaq = ['id', 'status'];
+            $selectFaq = array_merge($selectFaq, ($lang !== "nl") ? ['title', 'description'] : ['title_nl as title', 'description_nl as description']);
+            $faqs = DB::table('faq')->select($selectFaq)->where(['status' => 1])->get();
+            return view('frontend.faq', compact('faqs'));
         });
-        return view('frontend.faq', compact('faqs'));
     }
 
     public function blog_details($slug)
