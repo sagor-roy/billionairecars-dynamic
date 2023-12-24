@@ -101,11 +101,17 @@ header.sticky_menu {
     padding: 10px 0px;
 }
 
-ul.nav_list li {
+ul.nav_list>li {
     margin: 0px 15px;
 }
 
-ul.nav_list li a {
+@media (max-width:767px) {
+    ul.nav_list>li {
+        position: relative;
+    }
+}
+
+ul.nav_list>li>a {
     color: rgb(255, 255, 255);
     transition: all 0.5s ease 0s;
 }
@@ -221,6 +227,61 @@ ul.cars_item_list li a {
     text-decoration: none;
     position: relative;
 }
+
+ul.dropdown__menu {
+    z-index: 999;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 8px;
+    transition: all ease 0.5s;
+    box-shadow: 0 1px 5px 0px #6c757d;
+    background-color: #fff;
+}
+
+@media (min-width:768px) {
+    ul.dropdown__menu {
+        position: absolute;
+        max-width: 270px;
+        visibility: hidden;
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: top;
+        -webkit-transform: scaleY(0);
+        -moz-transform: scaleY(0);
+        -ms-transform: scaleY(0);
+        -o-transform: scaleY(0);
+    }
+
+    ul.dropdown__menu::before {
+        content: "";
+        position: absolute;
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-top: 10px solid transparent;
+        border-bottom: 11px solid #fff;
+        top: -20px;
+        left: 30px;
+    }
+}
+
+ul.dropdown__menu li a {
+    display: block;
+    padding: 5px 20px;
+    border-bottom: 1px solid #ddd;
+    transition: all 0.5s ease 0s;
+}
+
+ul.nav_list>li:hover ul.dropdown__menu {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+}
+
+
 
 ul.cars_item_list li a span {
     border: 1px solid white;
@@ -1627,4 +1688,18 @@ tr {
 
 section.contact__form.contact {
     padding: 30px 20px !important;
+}
+
+ul.dropdown__menu li:last-child a {
+    border-bottom: none;
+}
+
+button.toggler {
+    position: absolute;
+    right: 0;
+    top: 25px;
+    background-color: #fff;
+    padding: 0 7px;
+    border: none;
+    font-size: 22px;
 }

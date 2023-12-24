@@ -16,6 +16,20 @@
 		}
 	});
 
+
+	$('button.toggler').on('click', function () {
+		let icon = $(this).find('i');
+		let menu = $('.dropdown__menu');
+		// Toggle the class based on the current state
+		if (icon.hasClass('fa-plus')) {
+			icon.removeClass('fa-plus').addClass('fa-minus');
+			menu.removeClass('d-none');
+		} else {
+			icon.removeClass('fa-minus').addClass('fa-plus');
+			menu.addClass('d-none');
+		}
+	});
+
 	// Get the button
 	var mybutton = document.getElementById("backToTopBtn");
 

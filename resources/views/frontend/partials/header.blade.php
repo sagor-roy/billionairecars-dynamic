@@ -10,17 +10,25 @@
                     class="fas fa-bars"></i></span>
             </button>
             <div class="collapse navbar-collapse ms-md-5" id="navbar">
-                <ul class="navbar-nav ms-auto nav_list align-items-center">
+                <ul class="navbar-nav ms-auto nav_list align-items-md-center">
                     {{-- <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}">{{ __('site.home') }}</a>
                     </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('vehicles_filter') }}">{{ __('site.all_vehicles') }}</a>
+                        <a class="nav-link" href="{{ route('vehicles_filter') }}">{{ __('site.all_vehicles') }}
+                            <i class="fas fa-sharp d-none d-md-inline fa-solid fa-caret-down fa-sm ms-1"></i>
+                        </a>
+                        <button type="button" class="toggler d-md-none"><i class="fas fa-plus"></i></button>
+                        <ul class="dropdown__menu main d-none d-md-inline">
+                            <li><a href="{{ route('vehicles_filter') }}?type=commercial">Commercial Occassions</a></li>
+                            <li><a href="{{ route('vehicles_filter') }}?type=business">Business Occassions</a></li>
+                            <li><a href="{{ route('vehicles_filter') }}?type=rental">Billionair Rental</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link"
                             href="{{ route('vehicles_filter') }}?type=commercial">{{ __('site.commercial_vehicles') }}</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('car_plan') }}">{{ __('site.billionaire_car_plan') }}</a>
                     </li>
@@ -29,6 +37,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('contact') }}">{{ __('site.contact') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('vehicles_filter') }}?type=premium">Premium Cars</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle"

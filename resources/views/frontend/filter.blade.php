@@ -61,7 +61,7 @@
                         <select name="condition" class="form-control select2">
                             <option selected disabled>{{ __('site.condition') }}</option>
                             <option {{ request('condition') == 'New' ? 'selected' : '' }} value="New">New</option>
-                            <option {{ request('condition') == 'Use' ? 'selected' : '' }} value="Use">Use</option>
+                            <option {{ request('condition') == 'Use' ? 'selected' : '' }} value="Use">Used</option>
                         </select>
                     </div>
                     <div class="col-md-3 my-2">
@@ -69,6 +69,10 @@
                             <option selected disabled>{{ __('site.vehicles_types') }}</option>
                             <option {{ request('type') == 'premium' ? 'selected' : '' }} value="Premium">Premium</option>
                             <option {{ request('type') == 'commercial' ? 'selected' : '' }} value="Commercial">Commercial
+                            </option>
+                            <option {{ request('type') == 'business' ? 'selected' : '' }} value="Business">Business
+                            </option>
+                            <option {{ request('type') == 'rental' ? 'selected' : '' }} value="Rental">Rental
                             </option>
 
                         </select>

@@ -37,7 +37,13 @@ class HomeController extends Controller
             $selectFaq = array_merge($selectFaq, ($lang !== "nl") ? ['title', 'description'] : ['title_nl as title', 'description_nl as description']);
             $faqs = DB::table('faq')->select($selectFaq)->where(['status' => 1])->get();
 
-            $home_slider = DB::table('home_slider')->first();
+            $select = ['header','video_code'];
+            if ($lang !== "nl") {
+                array_push($select, "title");
+            } else {
+                array_push($select, "title_nl as title");
+            }
+            $home_slider = DB::table('home_slider')->select($select)->first();
             $brands = Brand::all();
 
             return view("frontend.home", compact("premium_products", "commercial_products", "faqs", "brands", "home_slider"))->render();

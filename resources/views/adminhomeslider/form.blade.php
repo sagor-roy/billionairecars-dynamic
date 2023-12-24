@@ -51,6 +51,16 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group row  " >
+										<label for="Title (Spanish)" class=" control-label col-md-4 text-left"> Title (Spanish) </label>
+										<div class="col-md-6">
+										  <input  type='text' name='title_nl' id='title_nl' value='{{ $row['title_nl'] }}' 
+						     class='form-control form-control-sm ' /> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
 										<label for="Video Code" class=" control-label col-md-4 text-left"> Video Code </label>
 										<div class="col-md-6">
 										  <input  type='text' name='video_code' id='video_code' value='{{ $row['video_code'] }}' 

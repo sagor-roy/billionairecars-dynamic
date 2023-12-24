@@ -1,7 +1,7 @@
 <?php
 return array(
     "home"            => "Home",
-    "all_vehicles"            => "Alle Voertuigen",
+    "all_vehicles"            => "Alle Occassions",
     "commercial_vehicles"            => "Bedrijfsvoertuigen",
     "billionaire_car_plan"            => "Billionaire Car Plan",
     "faq"            => "Veelgestelde Vragen",

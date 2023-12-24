@@ -25,7 +25,7 @@ return array(
 	"clear_all" => "Clear All",
 	"all" => "All",
 	"new" => "New",
-	"use" => "Use",
+	"use" => "Used",
 	"enter_keyword" => "Enter keyword",
 	"result" => "Result",
 	"sort_by" => "Sort By",

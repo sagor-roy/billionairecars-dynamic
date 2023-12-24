@@ -15,12 +15,12 @@ class adminhomeslider extends Sximo  {
 
 	public static function querySelect(  ){
 		
-		return "  SELECT home_slider.* FROM home_slider  ";
+		return " SELECT home_slider.* FROM home_slider ";
 	}	
 
 	public static function queryWhere(  ){
 		
-		return "  WHERE home_slider.id IS NOT NULL ";
+		return " WHERE home_slider.id IS NOT NULL ";
 	}
 	
 	public static function queryGroup(){
