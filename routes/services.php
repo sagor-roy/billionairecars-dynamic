@@ -29,4 +29,9 @@ Route::resource('services/adminhomeslider','Services\AdminhomesliderController')
 Route::resource('services/admincarplan','Services\AdmincarplanController');
 // End Routes for admincarplan 
 
+                    
+// Start Routes for adminsocialmedia 
+Route::resource('services/adminsocialmedia','Services\AdminsocialmediaController');
+// End Routes for adminsocialmedia 
+
                     ?>

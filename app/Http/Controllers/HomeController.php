@@ -37,7 +37,7 @@ class HomeController extends Controller
             $selectFaq = array_merge($selectFaq, ($lang !== "nl") ? ['title', 'description'] : ['title_nl as title', 'description_nl as description']);
             $faqs = DB::table('faq')->select($selectFaq)->where(['status' => 1])->get();
 
-            $select = ['header','video_code'];
+            $select = ['header', 'video_code'];
             if ($lang !== "nl") {
                 array_push($select, "title");
             } else {
@@ -46,7 +46,9 @@ class HomeController extends Controller
             $home_slider = DB::table('home_slider')->select($select)->first();
             $brands = Brand::all();
 
-            return view("frontend.home", compact("premium_products", "commercial_products", "faqs", "brands", "home_slider"))->render();
+            $social = DB::table('social_media')->where('status', 1)->get();
+
+            return view("frontend.home", compact("premium_products", "commercial_products", "faqs", "brands", "home_slider", "social"))->render();
         });
     }
 
@@ -208,6 +210,7 @@ class HomeController extends Controller
 
     public function contact()
     {
-        return view('frontend.contact');
+        $social = DB::table('social_media')->where('status', 1)->get();
+        return view('frontend.contact', compact('social'));
     }
 }

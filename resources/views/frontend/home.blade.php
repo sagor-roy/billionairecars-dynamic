@@ -150,7 +150,7 @@
                             @foreach ($premium_products as $key => $item)
                                 @if (!$loop->first)
                                     <div class="col-sm-6 col-lg-6 mb-3 wow animate__flipInX"
-                                        data-wow-duration="1.{{ $key+1 }}s">
+                                        data-wow-duration="1.{{ $key + 1 }}s">
                                         <a href="{{ route('details', $item->slug) }}">
                                             <div class="card border-0 sm_card product_card">
                                                 <div class="product-image">
@@ -176,7 +176,7 @@
                                 @endif
                             @endforeach
                             <div class="col-lg-6 mt-4 social_media_with_btn  wow animate__slideInRight"
-                            data-wow-duration="1s">
+                                data-wow-duration="1s">
                                 <a href="{{ route('vehicles_filter') }}?type=premium"
                                     class="add_list_button d-md-none text-center w-100"> {{ __('site.view_all') }}</a>
                             </div>
@@ -189,21 +189,21 @@
 
     <section class="mt-5 mt-md-0">
         <div class="container-lg">
-            <p class="d-md-none d-block text-center pb-3 w-100 wow animate__slideInLeft" data-wow-duration="1s">{{ __('site.follow_us') }}</p>
+            <p class="d-md-none d-block text-center pb-3 w-100 wow animate__slideInLeft" data-wow-duration="1s">
+                {{ __('site.follow_us') }}</p>
             <div class="social_media_with_btn">
                 <ul class="wow animate__slideInLeft" data-wow-duration="1s">
+
                     <li class="d-none d-md-block">{{ __('site.follow_us') }}</li>
-                    <li>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                    </li>
+                    @foreach ($social as $item)
+                        <li>
+                            <a href="{{ $item->url }}"><i class="fab fa-{{ $item->icon }}"></i></a>
+                        </li>
+                    @endforeach
                 </ul>
-                <a href="{{ route('vehicles_filter') }}?type=premium" class="add_list_button d-none d-md-block wow animate__slideInRight" data-wow-duration="1s"> {{ __('site.view_all') }}</a>
+                <a href="{{ route('vehicles_filter') }}?type=premium"
+                    class="add_list_button d-none d-md-block wow animate__slideInRight" data-wow-duration="1s">
+                    {{ __('site.view_all') }}</a>
             </div>
         </div>
     </section>
@@ -218,7 +218,8 @@
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         @foreach ($commercial_products as $key => $item)
-                            <div class="swiper-slide wow animate__slideInLeft" data-wow-duration="1.{{ $key+1 }}s">
+                            <div class="swiper-slide wow animate__slideInLeft"
+                                data-wow-duration="1.{{ $key + 1 }}s">
                                 <a href="{{ route('details', $item->slug) }}">
                                     <div class="card border-0 sm_card product_card">
                                         <div class="product-image">
@@ -267,8 +268,9 @@
                         </h1>
                     </div>
                     <div class="accordion accordion-flush" id="faqlist">
-                        @foreach ($faqs as $key=> $item)
-                            <div class="accordion-item wow animate__slideInLeft" data-wow-duration="1.{{ $key+1 }}s">
+                        @foreach ($faqs as $key => $item)
+                            <div class="accordion-item wow animate__slideInLeft"
+                                data-wow-duration="1.{{ $key + 1 }}s">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button {{ !$loop->first ? 'collapsed' : '' }}"
                                         type="button" data-bs-toggle="collapse"

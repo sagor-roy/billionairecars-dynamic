@@ -17,12 +17,13 @@
                     <div class="head_title" data-wow-duration="1s">
                         <h1> {{ __('site.contact') }}</h1>
                     </div>
-                    <p class="my-4">Dit is dé plek om als particulier of bedrijf premium auto’s te kopen. Neem voor meer informatie contact met ons op
+                    <p class="my-4">Dit is dé plek om als particulier of bedrijf premium auto’s te kopen. Neem voor meer
+                        informatie contact met ons op
                     </p>
 
                     <div class="pt-4">
                         <h2><span style="color: #E4CD66; font-weight: 600">+31 6 498 100 44
-                        </span></h2>
+                            </span></h2>
                         <p class="mt-2 mb-2"><i class="fas fa-envelope"></i> info@billionairecars.nl</p>
                         <p><i class="fas fa-map-marker-alt"></i> Parallelweg 120, 1948 NN, Beverwijk
                         </p>
@@ -31,15 +32,11 @@
                     <div class="social_media_with_btn pt-4 justify-content-start">
                         <ul class="" data-wow-duration="1s">
                             <li> {{ __('site.follow_us') }}</li>
-                            <li>
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fab fa-linkedin"></i></a>
-                            </li>
+                            @foreach ($social as $item)
+                                <li>
+                                    <a href="{{ $item->url }}"><i class="fab fa-{{ $item->icon }}"></i></a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -52,18 +49,21 @@
                                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                             </symbol>
                         </svg>
-    
+
                         <div id="alert_message"></div>
                         <form id="contactForm">
                             <div class="row">
                                 <div class="col-md-4 my-2">
-                                    <input type="text" class="form-control shadow-sm" placeholder=" {{ __('site.name') }}" name="name">
+                                    <input type="text" class="form-control shadow-sm"
+                                        placeholder=" {{ __('site.name') }}" name="name">
                                 </div>
                                 <div class="col-md-4 my-2">
-                                    <input type="text" class="form-control shadow-sm" placeholder=" {{ __('site.email') }}" name="email">
+                                    <input type="text" class="form-control shadow-sm"
+                                        placeholder=" {{ __('site.email') }}" name="email">
                                 </div>
                                 <div class="col-md-4 my-2">
-                                    <input type="text" class="form-control shadow-sm" placeholder=" {{ __('site.phone') }}" name="phone">
+                                    <input type="text" class="form-control shadow-sm"
+                                        placeholder=" {{ __('site.phone') }}" name="phone">
                                 </div>
                                 <div class="col-12 my-2">
                                     <textarea name="message" class="form-control shadow-sm" placeholder=" {{ __('site.message') }}" rows="10"></textarea>
@@ -76,7 +76,10 @@
             </div>
 
             <div class="mt-5" style="border-radius: 20px; overflow:hidden">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d29213.892583348425!2d90.42195354999998!3d23.7567715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1702186031508!5m2!1sen!2sbd" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d29213.892583348425!2d90.42195354999998!3d23.7567715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1702186031508!5m2!1sen!2sbd"
+                    width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
@@ -99,7 +102,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            
+
             $("#contactForm").validate({
                 rules: {
                     name: "required",
