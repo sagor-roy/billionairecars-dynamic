@@ -286,6 +286,72 @@
 						<td>{{ $row->other_information_nl}} </td>
 						
 					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Title Es', (isset($fields['title_es']['language'])? $fields['title_es']['language'] : array())) }}</td>
+						<td>{{ $row->title_es}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Short Description Es', (isset($fields['short_description_es']['language'])? $fields['short_description_es']['language'] : array())) }}</td>
+						<td>{{ $row->short_description_es}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Accessories Es', (isset($fields['accessories_es']['language'])? $fields['accessories_es']['language'] : array())) }}</td>
+						<td>{{ $row->accessories_es}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('License Plate Details Es', (isset($fields['license_plate_details_es']['language'])? $fields['license_plate_details_es']['language'] : array())) }}</td>
+						<td>{{ $row->license_plate_details_es}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Financial Details Es', (isset($fields['financial_details_es']['language'])? $fields['financial_details_es']['language'] : array())) }}</td>
+						<td>{{ $row->financial_details_es}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Technical Data Es', (isset($fields['technical_data_es']['language'])? $fields['technical_data_es']['language'] : array())) }}</td>
+						<td>{{ $row->technical_data_es}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Vehicle Data Specific Es', (isset($fields['vehicle_data_specific_es']['language'])? $fields['vehicle_data_specific_es']['language'] : array())) }}</td>
+						<td>{{ $row->vehicle_data_specific_es}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Environmental Data Es', (isset($fields['environmental_data_es']['language'])? $fields['environmental_data_es']['language'] : array())) }}</td>
+						<td>{{ $row->environmental_data_es}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Comments Es', (isset($fields['comments_es']['language'])? $fields['comments_es']['language'] : array())) }}</td>
+						<td>{{ $row->comments_es}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Options Es', (isset($fields['options_es']['language'])? $fields['options_es']['language'] : array())) }}</td>
+						<td>{{ $row->options_es}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Other Information Es', (isset($fields['other_information_es']['language'])? $fields['other_information_es']['language'] : array())) }}</td>
+						<td>{{ $row->other_information_es}} </td>
+						
+					</tr>
 						
 					<tr>
 						<td width='30%' class='label-view text-right'></td>

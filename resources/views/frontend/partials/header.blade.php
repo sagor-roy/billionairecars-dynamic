@@ -47,7 +47,7 @@
                             href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             @if (\Session::has('lang'))
-                                {{ session('lang') == 'en' ? 'English' : 'Spanish' }}
+                                {{ session('lang') == 'en' ? 'English' : (session('lang') == 'es' ? 'Spanish': 'Dutch') }}
                             @else
                                 English
                             @endif
@@ -57,7 +57,9 @@
                             <li class="m-0"><a class="dropdown-item text-dark"
                                     href="{{ route('setlocale', 'en') }}">English</a></li>
                             <li class="m-0"><a class="dropdown-item text-dark"
-                                    href="{{ route('setlocale', 'nl') }}">Spanish</a></li>
+                                    href="{{ route('setlocale', 'es') }}">Spanish</a></li>
+                            <li class="m-0"><a class="dropdown-item text-dark"
+                                    href="{{ route('setlocale', 'nl') }}">Dutch</a></li>
                         </ul>
                     </li>
                 </ul>

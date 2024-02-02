@@ -62,6 +62,18 @@
 						
 					</tr>
 				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Title Es', (isset($fields['title_es']['language'])? $fields['title_es']['language'] : array())) }}</td>
+						<td>{{ $row->title_es}} </td>
+						
+					</tr>
+				
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ SiteHelpers::activeLang('Description Es', (isset($fields['description_es']['language'])? $fields['description_es']['language'] : array())) }}</td>
+						<td>{{ $row->description_es}} </td>
+						
+					</tr>
+				
 			</tbody>	
 		</table>   
 

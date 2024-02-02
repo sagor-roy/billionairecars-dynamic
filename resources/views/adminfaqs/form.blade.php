@@ -41,9 +41,19 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group row  " >
-										<label for="Title (Sapnish)" class=" control-label col-md-4 text-left"> Title (Sapnish) </label>
+										<label for="Title (Dutch)" class=" control-label col-md-4 text-left"> Title (Dutch) </label>
 										<div class="col-md-6">
 										  <input  type='text' name='title_nl' id='title_nl' value='{{ $row['title_nl'] }}' 
+						     class='form-control form-control-sm ' /> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
+										<label for="Title (Spanish)" class=" control-label col-md-4 text-left"> Title (Spanish) </label>
+										<div class="col-md-6">
+										  <input  type='text' name='title_es' id='title_es' value='{{ $row['title_es'] }}' 
 						     class='form-control form-control-sm ' /> 
 										 </div> 
 										 <div class="col-md-2">
@@ -61,10 +71,20 @@
 										 </div>
 									  </div> 					
 									  <div class="form-group row  " >
-										<label for="Description (Sapnish)" class=" control-label col-md-4 text-left"> Description (Sapnish) </label>
+										<label for="Description (Dutch)" class=" control-label col-md-4 text-left"> Description (Dutch) </label>
 										<div class="col-md-6">
 										  <textarea name='description_nl' rows='5' id='description_nl' class='form-control form-control-sm '  
 				           >{{ $row['description_nl'] }}</textarea> 
+										 </div> 
+										 <div class="col-md-2">
+										 	
+										 </div>
+									  </div> 					
+									  <div class="form-group row  " >
+										<label for="Description (Spanish)" class=" control-label col-md-4 text-left"> Description (Spanish) </label>
+										<div class="col-md-6">
+										  <textarea name='description_es' rows='5' id='description_es' class='form-control form-control-sm '  
+				           >{{ $row['description_es'] }}</textarea> 
 										 </div> 
 										 <div class="col-md-2">
 										 	

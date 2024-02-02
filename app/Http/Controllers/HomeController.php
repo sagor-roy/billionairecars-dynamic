@@ -17,7 +17,9 @@ class HomeController extends Controller
         $lang = Session::get('lang');
         return Cache::remember("home_" . $lang, env('CACHE_TIME'), function () use ($lang) {
             $selectProduct = ['slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions'];
-            $selectTitle = ($lang !== "nl") ? ['title'] : ['title_nl as title'];
+
+            $selectTitle = ($lang == "nl") ? ['title_nl as title'] : (($lang == "es") ? ['title_es as title'] : ['title']);
+
 
             $premium_products = Product::select(array_merge($selectProduct, $selectTitle))
                 ->with('brands')
@@ -34,15 +36,26 @@ class HomeController extends Controller
                 ->get();
 
             $selectFaq = ['id', 'status'];
-            $selectFaq = array_merge($selectFaq, ($lang !== "nl") ? ['title', 'description'] : ['title_nl as title', 'description_nl as description']);
+            $selectFaq = array_merge(
+                $selectFaq,
+                ($lang === "nl")
+                    ? ['title_nl as title', 'description_nl as description']
+                    : (($lang === "es")
+                        ? ['title_es as title', 'description_es as description']
+                        : ['title', 'description'])
+            );
+
             $faqs = DB::table('faq')->select($selectFaq)->where(['status' => 1])->get();
 
             $select = ['header', 'video_code'];
-            if ($lang !== "nl") {
-                array_push($select, "title");
+            if ($lang === "nl") {
+                array_push($select, 'title_nl as title');
+            } elseif ($lang === "es") {
+                array_push($select, 'title_es as title');
             } else {
-                array_push($select, "title_nl as title");
+                array_push($select, 'title');
             }
+
             $home_slider = DB::table('home_slider')->select($select)->first();
             $brands = Brand::all();
 
@@ -70,6 +83,10 @@ class HomeController extends Controller
                 $localizedFields = array_map(function ($field) {
                     return "{$field}_nl as $field";
                 }, $localizedFields);
+            } else if ($lang == 'es') {
+                $localizedFields = array_map(function ($field) {
+                    return "{$field}_es as $field";
+                }, $localizedFields);
             }
 
             $select = array_merge($select, $localizedFields);
@@ -77,10 +94,12 @@ class HomeController extends Controller
             $details = Product::select($select)->with('brands')->where(['status' => 1, 'slug' => $slug])->firstOrFail();
 
             $select = ['slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions'];
-            if ($lang !== "nl") {
-                array_push($select, "title");
-            } else {
+            if ($lang == "es") {
+                array_push($select, "title_es as title");
+            } else if ($lang == 'nl') {
                 array_push($select, "title_nl as title");
+            } else {
+                array_push($select, "title");
             }
 
             $related_vehicles = Product::select($select)
@@ -118,11 +137,14 @@ class HomeController extends Controller
     {
         $lang = Session::get('lang');
         $select = ['slug', 'price', 'thumbnail', 'year', 'brand', 'fuel', 'color', 'conditions'];
-        if ($lang !== "nl") {
-            array_push($select, "title");
-        } else {
+        if ($lang == "es") {
+            array_push($select, "title_es as title");
+        } else if ($lang == 'nl') {
             array_push($select, "title_nl as title");
+        } else {
+            array_push($select, "title");
         }
+
         $products = Product::select($select)
             ->with('brands')
             ->where(['status' => 1,])
@@ -194,7 +216,14 @@ class HomeController extends Controller
         $lang = Session::get('lang');
         return Cache::remember("faqs_$lang", env('CACHE_TIME'), function () use ($lang) {
             $selectFaq = ['id', 'status'];
-            $selectFaq = array_merge($selectFaq, ($lang !== "nl") ? ['title', 'description'] : ['title_nl as title', 'description_nl as description']);
+            $selectFaq = array_merge(
+                $selectFaq,
+                ($lang === "nl")
+                    ? ['title_nl as title', 'description_nl as description']
+                    : (($lang === "es")
+                        ? ['title_es as title', 'description_es as description']
+                        : ['title', 'description'])
+            );
             $faqs = DB::table('faq')->select($selectFaq)->where(['status' => 1])->get();
             return view('frontend.faq', compact('faqs'))->render();
         });

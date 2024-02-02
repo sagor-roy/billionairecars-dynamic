@@ -16,15 +16,16 @@ use Illuminate\Http\Request;
 Route::get('/clear-cache', function () {
 	Artisan::call('cache:clear');
 	return "Cache is cleared";
+
 });
 
 Route::get('lang/{locale}', function (Request $request, $lang) {
-	//return \App::getLocale();
-	$lang = ($lang == 'en') ? $lang : 'nl';
+	$lang = ($lang == 'en') ? $lang : (($lang == 'es') ? $lang : 'nl');
 	$request->session()->put('lang', $lang);
 	\App::setLocale($lang);
 	return redirect()->back();
 })->name('setlocale');
+
 
 
 //Default Controller
